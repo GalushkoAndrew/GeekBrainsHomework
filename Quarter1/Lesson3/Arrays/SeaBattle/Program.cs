@@ -180,7 +180,7 @@ namespace GeekBrains.Learn.SeaBattle
                 Console.Write("|");
                 for (int y = 0; y <= array.GetUpperBound(1); y++)
                 {
-                    char s = array[x, y] == 1 ? '0' : ' ';
+                    char s = array[x, y] == 1 ? 'X' : 'О';
                     Console.Write($" {s} ");
                 }
                 Console.WriteLine("|");
