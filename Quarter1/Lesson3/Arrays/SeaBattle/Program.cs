@@ -206,7 +206,17 @@ namespace GeekBrains.Learn.SeaBattle
         }
 
         /// <summary>
-        /// Направление корабля от выбранной ранее стартовой позиции
+        /// тут я тренировался использовать комментарии
+        /// Направление корабля от выбранной ранее стартовой позиции <see cref="Point" />
+        /// <code>select * from table</code>
+        /// <list type="bullet">
+        /// <item>
+        /// <description>Item 1.</description>
+        /// </item>
+        /// <item>
+        /// <description>Item 2.</description>
+        /// </item>
+        /// </list>
         /// </summary>
         class Direction
         {
