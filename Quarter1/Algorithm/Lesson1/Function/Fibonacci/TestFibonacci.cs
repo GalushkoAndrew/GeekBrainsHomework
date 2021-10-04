@@ -2,8 +2,14 @@
 
 namespace GeekBrains.Learn.Fibonacci
 {
+    /// <summary>
+    /// Тест класса <see cref="MathFibonacci"/>
+    /// </summary>
     class TestFibonacci
     {
+        /// <summary>
+        /// ctor
+        /// </summary>
         public TestFibonacci()
         {
             MathFibonacci mathFibonacci = new();

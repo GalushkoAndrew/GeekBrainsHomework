@@ -1,7 +1,15 @@
 ﻿namespace GeekBrains.Learn.Fibonacci
 {
+    /// <summary>
+    /// Класс для расчета числа Фибоначчи
+    /// </summary>
     class MathFibonacci
     {
+        /// <summary>
+        /// Рассчитывает число Фибоначчи
+        /// </summary>
+        /// <param name="itegrations">Количество итераций расчета</param>
+        /// <returns>Число Фибоначчи</returns>
         public ulong GetFibonacci(int itegrations)
         {
             if (itegrations == 0)

@@ -7,6 +7,9 @@ namespace GeekBrains.Learn.FunctionSimpleNumber
     /// </summary>
     class TestSimple
     {
+        /// <summary>
+        /// ctor
+        /// </summary>
         public TestSimple()
         {
             MathSimple mathSimple = new();
