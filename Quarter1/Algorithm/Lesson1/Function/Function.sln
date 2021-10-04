@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31402.337
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FunctionSimpleNumber", "FunctionSimpleNumber\FunctionSimpleNumber.csproj", "{EB3AF32C-399E-43B1-9059-6DBD2AC30ED2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AsymptoticComplexity", "AsymptoticComplexity", "{6F370C51-C7CB-4902-922D-1F43710034B9}"
+	ProjectSection(SolutionItems) = preProject
+		AsymptoticComplexity\readme.txt = AsymptoticComplexity\readme.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fibonacci", "Fibonacci\Fibonacci.csproj", "{FF344875-5FAF-4DD2-98C7-0F8D8CFB5BDA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB3AF32C-399E-43B1-9059-6DBD2AC30ED2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB3AF32C-399E-43B1-9059-6DBD2AC30ED2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB3AF32C-399E-43B1-9059-6DBD2AC30ED2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB3AF32C-399E-43B1-9059-6DBD2AC30ED2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF344875-5FAF-4DD2-98C7-0F8D8CFB5BDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF344875-5FAF-4DD2-98C7-0F8D8CFB5BDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF344875-5FAF-4DD2-98C7-0F8D8CFB5BDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF344875-5FAF-4DD2-98C7-0F8D8CFB5BDA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8AAB511D-E12C-42DE-B768-68E5268F78C6}
+	EndGlobalSection
+EndGlobal
