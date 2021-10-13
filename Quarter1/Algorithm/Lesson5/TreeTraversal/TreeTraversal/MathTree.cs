@@ -17,8 +17,9 @@ namespace GeekBrains.Learn.TreeTraversal
         /// <summary>
         /// breadth-first search - поиск в ширину
         /// using queue
+        /// Метод визуально отображает последовательность перебора элементов
         /// </summary>
-        public void SearchBFS(Node head)
+        public void DrawSearchBFS(Node head)
         {
             queue.Enqueue(head);
 
@@ -36,8 +37,9 @@ namespace GeekBrains.Learn.TreeTraversal
         /// <summary>
         /// deep-first search - поиск в глубину
         /// using stack
+        /// Метод визуально отображает последовательность перебора элементов
         /// </summary>
-        public void SearchDFS(Node head)
+        public void DrawSearchDFS(Node head)
         {
             stack.Push(head);
 

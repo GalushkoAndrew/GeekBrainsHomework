@@ -47,11 +47,11 @@ namespace GeekBrains.Learn.TreeTraversal
             Console.WriteLine("--------------------------");
             Console.WriteLine("DFS");
             Console.WriteLine("--------------------------");
-            mathTree.SearchBFS(head);
+            mathTree.DrawSearchBFS(head);
             Console.WriteLine("--------------------------");
             Console.WriteLine("BFS");
             Console.WriteLine("--------------------------");
-            mathTree.SearchDFS(head);
+            mathTree.DrawSearchDFS(head);
         }
     }
 }
