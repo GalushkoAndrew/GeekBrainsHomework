@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31829.152
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BuildingWork", "BuildingWork\BuildingWork.csproj", "{7E243B3C-3332-4209-BE6A-CD9E5F010695}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{81B0BC94-303D-495F-84A3-B1993A1A444E}"
+	ProjectSection(SolutionItems) = preProject
+		StyleCopAnalyzersDefault.ruleset = StyleCopAnalyzersDefault.ruleset
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingLibrary", "BuildingLibrary\BuildingLibrary.csproj", "{433D5782-5377-4572-BCC6-FA05EA5E262D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7E243B3C-3332-4209-BE6A-CD9E5F010695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E243B3C-3332-4209-BE6A-CD9E5F010695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E243B3C-3332-4209-BE6A-CD9E5F010695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E243B3C-3332-4209-BE6A-CD9E5F010695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{433D5782-5377-4572-BCC6-FA05EA5E262D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{433D5782-5377-4572-BCC6-FA05EA5E262D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{433D5782-5377-4572-BCC6-FA05EA5E262D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{433D5782-5377-4572-BCC6-FA05EA5E262D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A7D3CEDD-732A-4049-A1E7-3C88C7E19842}
+	EndGlobalSection
+EndGlobal
