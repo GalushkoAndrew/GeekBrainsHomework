@@ -91,6 +91,12 @@ namespace GeekBrains.Learn.BankAccount
         }
 
         /// <inheritdoc/>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <inheritdoc/>
         public bool GetMoney(float value)
         {
             if (Balance >= value)
@@ -162,11 +168,17 @@ namespace GeekBrains.Learn.BankAccount
 
             if (ac1.AccountType == ac2.AccountType &&
                 ac1.Balance == ac2.Balance &&
-                ac1.Number)
+                ac1.Number == ac2.Number)
             {
-
+                return true;
             }
-            return true;
+
+            return false;
+        }
+
+        public static bool operator !=(Account ac1, Account ac2)
+        {
+            return !(ac1 == ac2);
         }
 
         public override bool Equals(object obj)
@@ -177,11 +189,6 @@ namespace GeekBrains.Learn.BankAccount
             }
 
             return this == (Account)obj;
-        }
-
-        public static bool operator !=(Account ac1, Account ac2)
-        {
-            return !(ac1 == ac2);
         }
 
         /// <summary>

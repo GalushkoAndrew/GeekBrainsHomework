@@ -26,6 +26,20 @@ namespace GeekBrains.Learn.BankAccount
             account2.GetMoneyFromAccount(account, 1F);
             Console.WriteLine(account.ToString());
             Console.WriteLine(account2.ToString());
+
+            Account ac3 = new(5.1F, AccountTypes.Savings);
+            Account ac4 = new(5.1F, AccountTypes.Savings);
+
+            if (!(ac3 == ac4))
+            {
+                Console.WriteLine($"не соблюдается равенство {ac3} == {ac4}");
+            }
+
+            if (account != ac4)
+            {
+                Console.WriteLine($"{ac3} != {ac4}");
+            }
+
         }
     }
 }
