@@ -147,6 +147,35 @@ namespace GeekBrains.Learn.BankAccount
             }
         }
 
+        public static bool operator ==(Account ac1, Account ac2)
+        {
+            if (ac1 is null || ac2 is null)
+            {
+                return false;
+            }
+
+            if (true)
+            {
+
+            }
+            return true;
+        }
+
+        public override bool Equals(object obj)
+        {
+            obj.GetType
+            if (obj.GetType == this.GetType)
+            {
+
+            }
+            return base.Equals(obj);
+        }
+
+        public static bool operator !=(Account ac1, Account ac2)
+        {
+            return !(ac1 == ac2);
+        }
+
         /// <summary>
         /// Генерирует номер счета
         /// </summary>
