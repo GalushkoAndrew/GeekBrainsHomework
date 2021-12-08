@@ -18,9 +18,14 @@ namespace GeekBrains.Learn.BankAccount
         private AccountTypes _accountType = AccountTypes.Savings;
 
         /// <summary>
-        /// Номер счета
+        /// Номер последнего созданного счета
         /// </summary>
         private static int _number = 0;
+
+        /// <summary>
+        /// Номер счета
+        /// </summary>
+        private int _numberCurrent = 0;
 
         /// <summary>
         /// ctor
@@ -49,6 +54,7 @@ namespace GeekBrains.Learn.BankAccount
         public Account(float balance, AccountTypes accountType)
         {
             GenerateNewNumber();
+            _numberCurrent = _number;
             Balance = balance;
             AccountType = accountType;
         }
@@ -56,10 +62,10 @@ namespace GeekBrains.Learn.BankAccount
         /// <summary>
         /// Номер счета
         /// </summary>
-        public static int Number
+        public int Number
         {
-            get { return _number; }
-            private set { _number = value; }
+            get { return _numberCurrent; }
+            private set { _numberCurrent = value; }
         }
 
         /// <summary>
@@ -183,7 +189,7 @@ namespace GeekBrains.Learn.BankAccount
         /// </summary>
         private static void GenerateNewNumber()
         {
-            Number++;
+            _number++;
         }
     }
 }
