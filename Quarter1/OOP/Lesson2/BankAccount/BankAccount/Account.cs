@@ -154,7 +154,9 @@ namespace GeekBrains.Learn.BankAccount
                 return false;
             }
 
-            if (true)
+            if (ac1.AccountType == ac2.AccountType &&
+                ac1.Balance == ac2.Balance &&
+                ac1.Number)
             {
 
             }
@@ -163,12 +165,12 @@ namespace GeekBrains.Learn.BankAccount
 
         public override bool Equals(object obj)
         {
-            obj.GetType
-            if (obj.GetType == this.GetType)
+            if (obj == null || this == null || obj.GetType() != this.GetType())
             {
-
+                return false;
             }
-            return base.Equals(obj);
+
+            return this == (Account)obj;
         }
 
         public static bool operator !=(Account ac1, Account ac2)
