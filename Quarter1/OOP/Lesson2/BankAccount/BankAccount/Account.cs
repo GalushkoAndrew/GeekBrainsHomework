@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace GeekBrains.Learn.BankAccount
 {
     /// <summary>
     /// Банковский счет
     /// </summary>
+    [DebuggerDisplay("{ToString()}")]
     public sealed class Account : IAccount
     {
         /// <summary>
