@@ -1,16 +1,11 @@
 ﻿namespace GeekBrains.Learn.BankAccount
 {
-    public interface IAccount_v3
+    public interface IAccount
     {
         /// <summary>
         /// Тип банковского счета
         /// </summary>
         AccountTypes AccountType { get; set; }
-
-        /// <summary>
-        /// Баланс
-        /// </summary>
-        float Balance { get; set; }
 
         /// <summary>
         /// Снять деньги
@@ -29,5 +24,13 @@
         bool PutMoney(float value);
 
         string ToString();
+
+        /// <summary>
+        /// Перевод денег с другого счета
+        /// </summary>
+        /// <param name="accountFrom">счет, с которого производится перевод</param>
+        /// <param name="value">сумма</param>
+        /// <returns>true = перевод успешен</returns>
+        bool GetMoneyFromAccount(Account accountFrom, float value);
     }
 }
