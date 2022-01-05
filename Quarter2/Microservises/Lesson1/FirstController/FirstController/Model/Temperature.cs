@@ -26,7 +26,7 @@ namespace GeekBrains.Learn.FirstController
         /// <summary>
         /// Temperature date-time
         /// </summary>
-        public DateTime Date { get; set; }
+        public DateTime Date { get; }
 
         /// <summary>
         /// Temperature value
