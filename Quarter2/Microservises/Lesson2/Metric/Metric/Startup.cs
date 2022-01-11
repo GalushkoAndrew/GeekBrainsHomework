@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
-using GeekBrains.Learn.Core.Infrastructure.Manager;
+using GeekBrains.Learn.Core.Infrastructure.DI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,7 +17,7 @@ namespace GeekBrains.Learn.Core.Metric.Controller
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddTransient<ICpuManager, CpuManager>();
+            services.AddServices();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Core.Metric.Controller info", Version = "v1" });
