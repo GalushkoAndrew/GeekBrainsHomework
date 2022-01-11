@@ -8,7 +8,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager
     public class RamManager : IRamManager
     {
         /// <inheritdoc/>
-        public bool GetMetricsFromAgent(int agentId, DateTime fromTime, DateTime toTime)
+        public bool GetMetricsFromAgent(DateTime fromTime, DateTime toTime)
         {
             return true;
         }

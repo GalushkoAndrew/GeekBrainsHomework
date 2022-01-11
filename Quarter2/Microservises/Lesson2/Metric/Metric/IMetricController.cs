@@ -11,9 +11,8 @@ namespace GeekBrains.Learn.Core.Metric.Controller
         /// <summary>
         /// Returns agent's metrics filtered by dates
         /// </summary>
-        /// <param name="agentId">agent</param>
         /// <param name="fromTime">begin time</param>
         /// <param name="toTime">end time</param>
-        public IActionResult GetMetricsFromAgent(int agentId, DateTime fromTime, DateTime toTime);
+        IActionResult GetMetricsFromAgent(DateTime fromTime, DateTime toTime);
     }
 }

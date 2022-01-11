@@ -16,11 +16,10 @@ namespace GeekBrains.Learn.Core.Tests
         [Fact]
         public void GetMetricsFromAgentTest()
         {
-            int agentId = 1;
             DateTime dateBegin = DateTime.Now.AddDays(-1);
             DateTime dateEnd = DateTime.Now.AddDays(1);
 
-            var result = _controller.GetMetricsFromAgent(agentId, dateBegin, dateEnd);
+            var result = _controller.GetMetricsFromAgent(dateBegin, dateEnd);
 
             Assert.IsAssignableFrom<IActionResult>(result);
         }
