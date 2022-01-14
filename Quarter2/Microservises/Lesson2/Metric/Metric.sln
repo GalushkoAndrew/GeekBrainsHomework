@@ -3,18 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Metric.Controller", "Metric\Metric.Controller.csproj", "{52C62193-1AF0-433A-B8B6-F8E7DA221FA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetricsAgent.Controller", "MetricsAgent.Controller\MetricsAgent.Controller.csproj", "{52C62193-1AF0-433A-B8B6-F8E7DA221FA2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution items", "Solution items", "{4C370848-503A-4F04-A35C-34A773B9608E}"
 	ProjectSection(SolutionItems) = preProject
 		StyleCopAnalyzersDefault.ruleset = StyleCopAnalyzersDefault.ruleset
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetricAgent.Controller", "MetricAgent.Controller\MetricAgent.Controller.csproj", "{653FA84E-DA6B-45A8-A4B2-9DBB4A0688F5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetricsManager.Controller", "MetricsManager.Controller\MetricsManager.Controller.csproj", "{653FA84E-DA6B-45A8-A4B2-9DBB4A0688F5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{9723896C-4E6D-4D6E-B23F-BD200A2FF417}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{BB8C9372-C61B-463D-B233-F38514397159}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{BB8C9372-C61B-463D-B233-F38514397159}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{918028CC-8DC4-46C0-960F-0A78CE10D031}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{BB8C9372-C61B-463D-B233-F38514397159}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB8C9372-C61B-463D-B233-F38514397159}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB8C9372-C61B-463D-B233-F38514397159}.Release|Any CPU.Build.0 = Release|Any CPU
+		{918028CC-8DC4-46C0-960F-0A78CE10D031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{918028CC-8DC4-46C0-960F-0A78CE10D031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{918028CC-8DC4-46C0-960F-0A78CE10D031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{918028CC-8DC4-46C0-960F-0A78CE10D031}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

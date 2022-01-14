@@ -1,4 +1,6 @@
 ﻿using GeekBrains.Learn.Core.Infrastructure.Manager;
+using GeekBrains.Learn.Core.Infrastructure.Repository;
+using GeekBrains.Learn.Core.Infrastructure.Repository.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GeekBrains.Learn.Core.Infrastructure.DI
@@ -14,11 +16,13 @@ namespace GeekBrains.Learn.Core.Infrastructure.DI
         /// <param name="service">Service collection</param>
         public static IServiceCollection AddServices(this IServiceCollection service)
         {
-            service.AddTransient<ICpuManager, CpuManager>();
-            service.AddTransient<IDotnetManager, DotnetManager>();
-            service.AddTransient<IHddManager, HddManager>();
-            service.AddTransient<INetworkManager, NetworkManager>();
-            service.AddTransient<IRamManager, RamManager>();
+            service.AddTransient<ICpuMetricsManager, CpuMetricsManager>();
+            service.AddTransient<IDotnetMetricsManager, DotnetMetricsManager>();
+            service.AddTransient<IHddMetricsManager, HddMetricsManager>();
+            service.AddTransient<INetworkMetricsManager, NetworkMetricsManager>();
+            service.AddTransient<IRamMetricsManager, RamMetricsManager>();
+
+            service.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             return service;
         }
     }
