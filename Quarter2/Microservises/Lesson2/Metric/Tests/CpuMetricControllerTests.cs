@@ -20,6 +20,7 @@ namespace GeekBrains.Learn.Core.Tests
         {
             Manager.Setup(x => x.GetMetricsFromAgent(It.IsAny<DateTime>(), It.IsAny<DateTime>()));
             _controller.GetMetricsFromAgent(It.IsAny<DateTime>(), It.IsAny<DateTime>());
+            VerifyLogger();
             Manager.VerifyAll();
         }
     }

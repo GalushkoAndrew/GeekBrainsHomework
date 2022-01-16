@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Moq;
+using System;
+using System.Text.RegularExpressions;
 
 namespace GeekBrains.Learn.Core.Tests
 {
@@ -19,5 +21,17 @@ namespace GeekBrains.Learn.Core.Tests
         }
 
         protected Mock<ILogger<T>> Logger { get { return _mockLogger; } }
+
+        protected void VerifyLogger()
+        {
+            var regex = new Regex(@"Input parameters: fromTime = .+, toTime = .+");
+            Logger.Verify(
+                    m => m.Log(
+                        LogLevel.Information,
+                        It.IsAny<EventId>(),
+                        It.Is<It.IsAnyType>((v, _) => regex.IsMatch(v.ToString())),
+                        null,
+                        It.IsAny<Func<It.IsAnyType, Exception, string>>()));
+        }
     }
 }
