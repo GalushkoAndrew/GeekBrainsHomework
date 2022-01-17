@@ -1,8 +1,9 @@
-﻿using GeekBrains.Learn.Core.MetricAgent.Controller;
+﻿using GeekBrains.Learn.Core.MetricsAgent.ControllerTests;
+using GeekBrains.Learn.Core.MetricsManager.Controller;
 using Microsoft.AspNetCore.Mvc;
 using Xunit;
 
-namespace GeekBrains.Learn.Core.Tests
+namespace GeekBrains.Learn.Core.ControllerMetricsManagerTests
 {
     public class MetricsManagerControllerTests : LoggerTestBase<MetricsManagerController>
     {

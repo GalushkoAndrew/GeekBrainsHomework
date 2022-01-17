@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace GeekBrains.Learn.Core.MetricAgent.Controller
+namespace GeekBrains.Learn.Core.MetricsManager.Controller
 {
     /// <summary>
     /// Agent's manager controller

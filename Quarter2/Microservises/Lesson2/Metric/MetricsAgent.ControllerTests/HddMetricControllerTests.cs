@@ -1,18 +1,18 @@
-using System;
+﻿using System;
 using GeekBrains.Learn.Core.Infrastructure.Manager;
 using GeekBrains.Learn.Core.MetricsAgent.Controller;
 using Moq;
 using Xunit;
 
-namespace GeekBrains.Learn.Core.Tests
+namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
-    public class CpuMetricControllerTests : MetricTestsBase<ICpuMetricsManager, CpuMetricController>
+    public class HddMetricControllerTests : MetricTestsBase<IHddMetricsManager, HddMetricController>
     {
-        private readonly CpuMetricController _controller;
+        private readonly HddMetricController _controller;
 
-        public CpuMetricControllerTests() : base()
+        public HddMetricControllerTests() : base()
         {
-            _controller = new CpuMetricController(Manager.Object, Logger.Object);
+            _controller = new HddMetricController(Manager.Object, Logger.Object);
         }
 
         [Fact]

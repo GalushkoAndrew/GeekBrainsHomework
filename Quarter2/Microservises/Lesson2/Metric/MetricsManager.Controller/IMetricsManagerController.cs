@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace GeekBrains.Learn.Core.MetricAgent.Controller
+namespace GeekBrains.Learn.Core.MetricsManager.Controller
 {
     /// <summary>
     /// Agents controller interface

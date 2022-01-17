@@ -4,7 +4,7 @@ using GeekBrains.Learn.Core.MetricsAgent.Controller;
 using Moq;
 using Xunit;
 
-namespace GeekBrains.Learn.Core.Tests
+namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
     public class DotnetMetricControllerTests : MetricTestsBase<IDotnetMetricsManager, DotnetMetricController>
     {

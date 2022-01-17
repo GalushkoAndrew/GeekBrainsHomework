@@ -1,6 +1,6 @@
 ﻿using Moq;
 
-namespace GeekBrains.Learn.Core.Tests
+namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
     /// <summary>
     /// Base test class

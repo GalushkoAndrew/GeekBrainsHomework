@@ -4,15 +4,15 @@ using GeekBrains.Learn.Core.MetricsAgent.Controller;
 using Moq;
 using Xunit;
 
-namespace GeekBrains.Learn.Core.Tests
+namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
-    public class HddMetricControllerTests : MetricTestsBase<IHddMetricsManager, HddMetricController>
+    public class RamMetricControllerTests : MetricTestsBase<IRamMetricsManager, RamMetricController>
     {
-        private readonly HddMetricController _controller;
+        private readonly RamMetricController _controller;
 
-        public HddMetricControllerTests() : base()
+        public RamMetricControllerTests() : base()
         {
-            _controller = new HddMetricController(Manager.Object, Logger.Object);
+            _controller = new RamMetricController(Manager.Object, Logger.Object);
         }
 
         [Fact]

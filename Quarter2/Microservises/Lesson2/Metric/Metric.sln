@@ -14,9 +14,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetricsManager.Controller",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{9723896C-4E6D-4D6E-B23F-BD200A2FF417}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tests", "Tests\Tests.csproj", "{BB8C9372-C61B-463D-B233-F38514397159}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MetricsAgent.ControllerTests", "MetricsAgent.ControllerTests\MetricsAgent.ControllerTests.csproj", "{BB8C9372-C61B-463D-B233-F38514397159}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Model", "Model\Model.csproj", "{918028CC-8DC4-46C0-960F-0A78CE10D031}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Model", "Model\Model.csproj", "{918028CC-8DC4-46C0-960F-0A78CE10D031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetricsManager.ControllerTests", "MetricsManager.ControllerTests\MetricsManager.ControllerTests.csproj", "{58550E8F-6DCC-4665-BD3D-34C829F14027}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,10 @@ Global
 		{918028CC-8DC4-46C0-960F-0A78CE10D031}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{918028CC-8DC4-46C0-960F-0A78CE10D031}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{918028CC-8DC4-46C0-960F-0A78CE10D031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58550E8F-6DCC-4665-BD3D-34C829F14027}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58550E8F-6DCC-4665-BD3D-34C829F14027}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58550E8F-6DCC-4665-BD3D-34C829F14027}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58550E8F-6DCC-4665-BD3D-34C829F14027}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

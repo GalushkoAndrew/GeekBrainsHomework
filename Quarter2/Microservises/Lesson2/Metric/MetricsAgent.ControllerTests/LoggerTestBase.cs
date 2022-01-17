@@ -3,7 +3,7 @@ using Moq;
 using System;
 using System.Text.RegularExpressions;
 
-namespace GeekBrains.Learn.Core.Tests
+namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
     /// <summary>
     /// base test class

@@ -5,7 +5,7 @@
 
     <IsPackable>false</IsPackable>
 
-    <RootNamespace>GeekBrains.Learn.Core.Tests</RootNamespace>
+    <RootNamespace>GeekBrains.Learn.Core.MetricsAgent.ControllerTests</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

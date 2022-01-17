@@ -1,18 +1,18 @@
-﻿using System;
+using System;
 using GeekBrains.Learn.Core.Infrastructure.Manager;
 using GeekBrains.Learn.Core.MetricsAgent.Controller;
 using Moq;
 using Xunit;
 
-namespace GeekBrains.Learn.Core.Tests
+namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
-    public class RamMetricControllerTests : MetricTestsBase<IRamMetricsManager, RamMetricController>
+    public class CpuMetricControllerTests : MetricTestsBase<ICpuMetricsManager, CpuMetricController>
     {
-        private readonly RamMetricController _controller;
+        private readonly CpuMetricController _controller;
 
-        public RamMetricControllerTests() : base()
+        public CpuMetricControllerTests() : base()
         {
-            _controller = new RamMetricController(Manager.Object, Logger.Object);
+            _controller = new CpuMetricController(Manager.Object, Logger.Object);
         }
 
         [Fact]
