@@ -1,12 +1,13 @@
 ﻿using System;
-using GeekBrains.Learn.Core.Infrastructure.Manager;
+using GeekBrains.Learn.Core.DAO.Model.Models;
+using GeekBrains.Learn.Core.DTO;
 using GeekBrains.Learn.Core.MetricsAgent.Controller;
 using Moq;
 using Xunit;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
-    public class NetworkMetricControllerTests : MetricTestsBase<INetworkMetricsManager, NetworkMetricController>
+    public class NetworkMetricControllerTests : MetricTestsBase<NetworkMetric, NetworkMetricDto, NetworkMetricController>
     {
         private readonly NetworkMetricController _controller;
 

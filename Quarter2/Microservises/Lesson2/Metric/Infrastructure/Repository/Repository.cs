@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
+using System.Linq;
+using Dapper;
+using GeekBrains.Learn.Core.DAO.Model;
 using GeekBrains.Learn.Core.DAO.Model.Base;
 using GeekBrains.Learn.Core.Infrastructure.Repository.Interfaces;
+using static Dapper.SqlMapper;
 
 namespace GeekBrains.Learn.Core.Infrastructure.Repository
 {
@@ -10,36 +15,80 @@ namespace GeekBrains.Learn.Core.Infrastructure.Repository
     /// </summary>
     /// <typeparam name="T">class</typeparam>
     public class Repository<T> : IRepository<T>
-         where T : class, IHaveId, new()
+         where T : class, IBaseModel, new()
     {
-        /// <inheritdoc/>
-        public T Create(T entity)
+        private readonly string _connectionString;
+
+        /// <summary>
+        /// ctor
+        /// </summary>
+        public Repository(ConnectionString connectionString)
         {
-            return entity;
+            _connectionString = connectionString.Value;
+            CreateStructureDataBase();
+        }
+
+        private string TableName
+        {
+            get { return typeof(T).Name + "s"; }
         }
 
         /// <inheritdoc/>
-        public void Delete(int id)
+        public T Create(T entity)
         {
-            return;
+            using var connection = new SQLiteConnection(_connectionString);
+            connection.Open();
+
+            var transaction = connection.BeginTransaction();
+
+            connection.Execute("INSERT INTO " + TableName + "(Value, Date) VALUES(@value, @date);",
+                new { entity.Value, entity.Date });
+
+            int rowId = connection.QuerySingleOrDefault<int>("SELECT last_insert_rowid();");
+
+            transaction.Commit();
+
+            return Get(rowId);
+        }
+
+        /// <inheritdoc/>
+        public int Delete(int id)
+        {
+            using var connection = new SQLiteConnection(_connectionString);
+            return connection.Execute("DELETE FROM " + TableName + " WHERE Id = @id;", new { id });
         }
 
         /// <inheritdoc/>
         public T Get(int id)
         {
-            return new T();
+            using var connection = new SQLiteConnection(_connectionString);
+            return connection.QuerySingleOrDefault<T>("SELECT * FROM " + TableName + " WHERE Id = @id;",
+                new { id });
         }
 
         /// <inheritdoc/>
         public List<T> GetListFiltered(DateTime fromTime, DateTime toTime)
         {
-            return new List<T>();
+            using var connection = new SQLiteConnection(_connectionString);
+            return connection.Query<T>("SELECT * FROM " + TableName + " WHERE Date >= @fromTime AND Date <= @toTime;",
+                new { fromTime, toTime }).ToList();
         }
 
         /// <inheritdoc/>
         public T Update(T entity)
         {
-            return entity;
+            using var connection = new SQLiteConnection(_connectionString);
+
+            connection.Execute("UPDATE " + TableName + " SET Value = @value, Date = @date WHERE Id = @id;",
+                new { entity.Value, entity.Date, entity.Id });
+
+            return Get(entity.Id);
+        }
+
+        private void CreateStructureDataBase()
+        {
+            using var connection = new SQLiteConnection(_connectionString);
+            connection.Execute("CREATE TABLE IF NOT EXISTS " + TableName + "(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Value INT, Date DATETIME);");
         }
     }
 }

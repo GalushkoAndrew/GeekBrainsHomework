@@ -1,6 +1,7 @@
-﻿using System;
+﻿using GeekBrains.Learn.Core.DAO.Model.Models;
+using GeekBrains.Learn.Core.DTO;
 using GeekBrains.Learn.Core.Infrastructure.Manager;
-using Microsoft.AspNetCore.Mvc;
+using GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base;
 using Microsoft.Extensions.Logging;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.Controller
@@ -8,48 +9,13 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller
     /// <summary>
     /// Cpu metrics controller
     /// </summary>
-    [Route("api/metrics/cpu")]
-    public class CpuMetricController : ControllerBase, IMetricsController
+    public class CpuMetricController : MetricsController<CpuMetric, CpuMetricDto>
     {
-        private readonly ICpuMetricsManager _manager;
-        private readonly ILogger<CpuMetricController> _logger;
-
         /// <summary>
         /// ctor
         /// </summary>
-        public CpuMetricController(ICpuMetricsManager manager, ILogger<CpuMetricController> logger)
+        public CpuMetricController(IMetricsManager<CpuMetric, CpuMetricDto> manager, ILogger<CpuMetricController> logger) : base(manager, logger)
         {
-            _manager = manager;
-            _logger = logger;
-        }
-
-        /// <summary>
-        /// Returns metrics filtered by dates
-        /// </summary>
-        /// <param name="fromTime">begin time</param>
-        /// <param name="toTime">end time</param>
-        [HttpGet("from/{fromTime}/to/{toTime}")]
-        public IActionResult GetMetricsFromAgent(
-            [FromRoute] DateTime fromTime,
-            [FromRoute] DateTime toTime)
-        {
-            try
-            {
-                _logger.LogInformation($"Input parameters: fromTime = {fromTime}, toTime = {toTime}");
-                return Ok(_manager.GetMetricsFromAgent(fromTime, toTime));
-            }
-            catch (Exception ex)
-            {
-                try
-                {
-                    _logger.LogError(ex.Message);
-                }
-                catch (Exception)
-                {
-                }
-
-                return BadRequest(ex.Message);
-            }
         }
     }
 }

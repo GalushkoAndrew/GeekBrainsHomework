@@ -1,4 +1,7 @@
-﻿using Moq;
+﻿using GeekBrains.Learn.Core.DAO.Model.Base;
+using GeekBrains.Learn.Core.DTO.Base;
+using GeekBrains.Learn.Core.Infrastructure.Manager;
+using Moq;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
@@ -6,19 +9,21 @@ namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
     /// Base test class
     /// include manager object
     /// </summary>
-    /// <typeparam name="IT">class interface</typeparam>
+    /// <typeparam name="TEntity">entity</typeparam>
+    /// <typeparam name="TDto">dto</typeparam>
     /// <typeparam name="T">class</typeparam>
-    public abstract class MetricTestsBase<IT, T> : LoggerTestBase<T>
+    public abstract class MetricTestsBase<TEntity, TDto, T> : LoggerTestBase<T>
         where T : class
-        where IT : class
+        where TEntity : IBaseModel
+        where TDto : IBaseModelDto
     {
-        private readonly Mock<IT> _mockMetricsManager;
+        private readonly Mock<IMetricsManager<TEntity, TDto>> _mockMetricsManager;
 
         public MetricTestsBase() : base()
         {
-            _mockMetricsManager = new Mock<IT>();
+            _mockMetricsManager = new Mock<IMetricsManager<TEntity, TDto>>();
         }
 
-        protected Mock<IT> Manager { get { return _mockMetricsManager; } }
+        protected Mock<IMetricsManager<TEntity, TDto>> Manager { get { return _mockMetricsManager; } }
     }
 }

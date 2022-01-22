@@ -1,6 +1,7 @@
-﻿using System;
+﻿using GeekBrains.Learn.Core.DAO.Model.Models;
+using GeekBrains.Learn.Core.DTO;
 using GeekBrains.Learn.Core.Infrastructure.Manager;
-using Microsoft.AspNetCore.Mvc;
+using GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base;
 using Microsoft.Extensions.Logging;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.Controller
@@ -8,48 +9,13 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller
     /// <summary>
     /// Network metrics controller
     /// </summary>
-    [Route("api/metrics/network")]
-    public class NetworkMetricController : ControllerBase, IMetricsController
+    public class NetworkMetricController : MetricsController<NetworkMetric, NetworkMetricDto>
     {
-        private readonly INetworkMetricsManager _manager;
-        private readonly ILogger<NetworkMetricController> _logger;
-
         /// <summary>
         /// ctor
         /// </summary>
-        public NetworkMetricController(INetworkMetricsManager manager, ILogger<NetworkMetricController> logger)
+        public NetworkMetricController(IMetricsManager<NetworkMetric, NetworkMetricDto> manager, ILogger<NetworkMetricController> logger) : base(manager, logger)
         {
-            _manager = manager;
-            _logger = logger;
-        }
-
-        /// <summary>
-        /// Returns metrics filtered by dates
-        /// </summary>
-        /// <param name="fromTime">begin time</param>
-        /// <param name="toTime">end time</param>
-        [HttpGet("from/{fromTime}/to/{toTime}")]
-        public IActionResult GetMetricsFromAgent(
-            [FromRoute] DateTime fromTime,
-            [FromRoute] DateTime toTime)
-        {
-            try
-            {
-                _logger.LogInformation($"Input parameters: fromTime = {fromTime}, toTime = {toTime}");
-                return Ok(_manager.GetMetricsFromAgent(fromTime, toTime));
-            }
-            catch (Exception ex)
-            {
-                try
-                {
-                    _logger.LogError(ex.Message);
-                }
-                catch (Exception)
-                {
-                }
-
-                return BadRequest(ex.Message);
-            }
         }
     }
 }

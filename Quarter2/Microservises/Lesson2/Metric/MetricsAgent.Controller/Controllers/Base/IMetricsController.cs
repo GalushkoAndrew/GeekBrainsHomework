@@ -1,45 +1,43 @@
 ﻿using System;
-using System.Collections.Generic;
-using GeekBrains.Learn.Core.DAO.Model.Base;
 using GeekBrains.Learn.Core.DTO.Base;
+using Microsoft.AspNetCore.Mvc;
 
-namespace GeekBrains.Learn.Core.Infrastructure.Manager
+namespace GeekBrains.Learn.Core.MetricsAgent.Controller
 {
     /// <summary>
-    /// Base metric manager interface
+    /// Metric controller interface
     /// </summary>
-    /// <typeparam name="TEntity">entity</typeparam>
     /// <typeparam name="TDto">Dto</typeparam>
-    public interface IMetricsManager<TEntity, TDto>
-        where TEntity : IBaseModel
+    public interface IMetricsController<TDto>
         where TDto : IBaseModelDto
     {
         /// <summary>
-        /// Returns metrics
+        /// Returns agent's metrics filtered by dates
         /// </summary>
         /// <param name="fromTime">begin time</param>
         /// <param name="toTime">end time</param>
-        List<TDto> GetMetricsFromAgent(DateTime fromTime, DateTime toTime);
+        IActionResult GetMetricsFromAgent(DateTime fromTime, DateTime toTime);
 
         /// <summary>
         /// Creates entity
         /// </summary>
         /// <param name="dto">dto</param>
-        TDto Create(TDto dto);
+        /// <returns>created Dto</returns>
+        IActionResult Create(TDto dto);
 
         /// <summary>
         /// Get single entity
         /// </summary>
-        TDto Get(int id);
+        IActionResult Get(int id);
 
         /// <summary>
         /// Update entity
         /// </summary>
-        TDto Update(TDto entity);
+        IActionResult Update(TDto dto);
 
         /// <summary>
         /// Delete entity
         /// </summary>
-        int Delete(int id);
+        IActionResult Delete(int id);
     }
 }

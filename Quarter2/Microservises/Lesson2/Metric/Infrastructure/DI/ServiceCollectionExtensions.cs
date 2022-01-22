@@ -16,12 +16,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.DI
         /// <param name="service">Service collection</param>
         public static IServiceCollection AddServices(this IServiceCollection service)
         {
-            service.AddTransient<ICpuMetricsManager, CpuMetricsManager>();
-            service.AddTransient<IDotnetMetricsManager, DotnetMetricsManager>();
-            service.AddTransient<IHddMetricsManager, HddMetricsManager>();
-            service.AddTransient<INetworkMetricsManager, NetworkMetricsManager>();
-            service.AddTransient<IRamMetricsManager, RamMetricsManager>();
-
+            service.AddTransient(typeof(IMetricsManager<,>), typeof(MetricsManager<,>));
             service.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             return service;
         }

@@ -1,12 +1,13 @@
 ﻿using System;
-using GeekBrains.Learn.Core.Infrastructure.Manager;
+using GeekBrains.Learn.Core.DAO.Model.Models;
+using GeekBrains.Learn.Core.DTO;
 using GeekBrains.Learn.Core.MetricsAgent.Controller;
 using Moq;
 using Xunit;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
-    public class HddMetricControllerTests : MetricTestsBase<IHddMetricsManager, HddMetricController>
+    public class HddMetricControllerTests : MetricTestsBase<HddMetric, HddMetricDto, HddMetricController>
     {
         private readonly HddMetricController _controller;
 

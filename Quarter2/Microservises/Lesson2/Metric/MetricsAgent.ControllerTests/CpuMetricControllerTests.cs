@@ -1,15 +1,15 @@
 using System;
-using GeekBrains.Learn.Core.Infrastructure.Manager;
+using GeekBrains.Learn.Core.DAO.Model.Models;
+using GeekBrains.Learn.Core.DTO;
 using GeekBrains.Learn.Core.MetricsAgent.Controller;
 using Moq;
 using Xunit;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
-    public class CpuMetricControllerTests : MetricTestsBase<ICpuMetricsManager, CpuMetricController>
+    public class CpuMetricControllerTests : MetricTestsBase<CpuMetric, CpuMetricDto, CpuMetricController>
     {
         private readonly CpuMetricController _controller;
-
         public CpuMetricControllerTests() : base()
         {
             _controller = new CpuMetricController(Manager.Object, Logger.Object);

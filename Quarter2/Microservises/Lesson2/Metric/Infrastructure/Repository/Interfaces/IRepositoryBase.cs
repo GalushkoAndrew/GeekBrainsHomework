@@ -20,13 +20,13 @@ namespace GeekBrains.Learn.Core.Infrastructure.Repository.Interfaces
         T Get(int id);
 
         /// <summary>
-        /// Update entity value
+        /// Update entity
         /// </summary>
         T Update(T entity);
 
         /// <summary>
         /// Delete entity
         /// </summary>
-        void Delete(int id);
+        int Delete(int id);
     }
 }
