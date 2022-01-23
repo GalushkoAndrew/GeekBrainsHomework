@@ -48,7 +48,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
             }
             catch (Exception ex)
             {
-                Log(ex.Message);
+                Log(ex.Message, LogLevel.Error);
                 return BadRequest(ex.Message);
             }
         }
@@ -68,7 +68,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
             }
             catch (Exception ex)
             {
-                Log(ex.Message);
+                Log(ex.Message, LogLevel.Error);
                 return BadRequest(ex);
             }
         }
@@ -92,7 +92,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
             }
             catch (Exception ex)
             {
-                Log(ex.Message);
+                Log(ex.Message, LogLevel.Error);
                 return BadRequest(ex);
             }
         }
@@ -110,7 +110,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
             }
             catch (Exception ex)
             {
-                Log(ex.Message);
+                Log(ex.Message, LogLevel.Error);
                 return BadRequest(ex);
             }
         }
@@ -134,16 +134,16 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
             }
             catch (Exception ex)
             {
-                Log(ex.Message);
+                Log(ex.Message, LogLevel.Error);
                 return BadRequest(ex);
             }
         }
 
-        private void Log(string message)
+        private void Log(string message, LogLevel logLevel = LogLevel.Information)
         {
             try
             {
-                _logger.LogError(message);
+                _logger.Log(logLevel, message);
             }
             catch (Exception)
             {
