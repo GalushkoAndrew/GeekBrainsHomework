@@ -9,7 +9,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller
     /// </summary>
     /// <typeparam name="TDto">Dto</typeparam>
     public interface IMetricsController<TDto>
-        where TDto : IBaseModelDto
+        where TDto : IMetricDto
     {
         /// <summary>
         /// Returns agent's metrics filtered by dates

@@ -17,7 +17,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
     [ApiController]
     public abstract class MetricsController<TEntity, TDto> : ControllerBase, IMetricsController<TDto>
         where TEntity : IMetric
-        where TDto : IBaseModelDto
+        where TDto : IMetricDto
     {
         private readonly IMetricsManager<TEntity, TDto> _manager;
         private readonly ILogger _logger;

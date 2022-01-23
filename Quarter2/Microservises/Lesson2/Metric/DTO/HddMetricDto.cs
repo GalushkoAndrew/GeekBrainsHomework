@@ -3,7 +3,7 @@ using System;
 
 namespace GeekBrains.Learn.Core.DTO
 {
-    public class HddMetricDto : IBaseModelDto
+    public class HddMetricDto : IMetricDto
     {
         public int Value { get; set; }
         public DateTime Date { get; set; }

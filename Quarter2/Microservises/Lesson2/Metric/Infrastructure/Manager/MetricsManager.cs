@@ -10,7 +10,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager
     /// <inheritdoc/>
     public class MetricsManager<TEntity, TDto> : IMetricsManager<TEntity, TDto>
         where TEntity : class, IMetric
-        where TDto : IBaseModelDto
+        where TDto : IMetricDto
     {
         private readonly IRepository<TEntity> _repository;
         private readonly IMapper _mapper;

@@ -3,7 +3,7 @@ using System;
 
 namespace GeekBrains.Learn.Core.DTO
 {
-    public class RamMetricDto : IBaseModelDto
+    public class RamMetricDto : IMetricDto
     {
         public int Value { get; set; }
         public DateTime Date { get; set; }
