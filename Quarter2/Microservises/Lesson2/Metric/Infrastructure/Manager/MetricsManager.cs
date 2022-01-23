@@ -9,7 +9,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager
 {
     /// <inheritdoc/>
     public class MetricsManager<TEntity, TDto> : IMetricsManager<TEntity, TDto>
-        where TEntity : class, IBaseModel
+        where TEntity : class, IMetric
         where TDto : IBaseModelDto
     {
         private readonly IRepository<TEntity> _repository;
@@ -45,7 +45,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager
         /// <inheritdoc/>
         public List<TDto> GetMetricsFromAgent(DateTime fromTime, DateTime toTime)
         {
-            return _mapper.Map<List<TDto>>(_repository.GetListFiltered(fromTime, toTime));
+            return _mapper.Map<List<TDto>>(_repository.GetFilteredList(fromTime, toTime));
         }
 
         /// <inheritdoc/>

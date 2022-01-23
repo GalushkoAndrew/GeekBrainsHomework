@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Text.Json;
 using GeekBrains.Learn.Core.DAO.Model.Base;
 using GeekBrains.Learn.Core.DTO.Base;
 using GeekBrains.Learn.Core.Infrastructure.Manager;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using System.Text.Json;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
 {
@@ -16,7 +16,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
     [Route("[controller]")]
     [ApiController]
     public abstract class MetricsController<TEntity, TDto> : ControllerBase, IMetricsController<TDto>
-        where TEntity : IBaseModel
+        where TEntity : IMetric
         where TDto : IBaseModelDto
     {
         private readonly IMetricsManager<TEntity, TDto> _manager;
@@ -124,7 +124,13 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
             try
             {
                 Log($"Input parameters: {id}");
-                return Ok(_manager.Delete(id));
+                var result = _manager.Delete(id);
+                if (result == 0)
+                {
+                    return NotFound();
+                }
+
+                return Ok(result);
             }
             catch (Exception ex)
             {

@@ -1,13 +1,10 @@
-﻿using GeekBrains.Learn.Core.DAO.Model.Base;
-
-namespace GeekBrains.Learn.Core.Infrastructure.Repository.Interfaces
+﻿namespace GeekBrains.Learn.Core.Infrastructure.Repository.Interfaces
 {
     /// <summary>
     /// Base repository interface
     /// </summary>
     /// <typeparam name="T">class</typeparam>
     public interface IRepositoryBase<T>
-        where T : class, IHaveId
     {
         /// <summary>
         /// Create entity

@@ -3,7 +3,7 @@ using System;
 
 namespace GeekBrains.Learn.Core.DAO.Model.Models
 {
-    public class DotnetMetric : IBaseModel
+    public class DotnetMetric : IMetric
     {
         public int Value { get; set; }
         public DateTime Date { get; set; }

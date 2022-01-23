@@ -11,7 +11,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager
     /// <typeparam name="TEntity">entity</typeparam>
     /// <typeparam name="TDto">Dto</typeparam>
     public interface IMetricsManager<TEntity, TDto>
-        where TEntity : IBaseModel
+        where TEntity : IMetric
         where TDto : IBaseModelDto
     {
         /// <summary>

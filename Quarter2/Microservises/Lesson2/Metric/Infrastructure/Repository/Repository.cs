@@ -15,7 +15,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.Repository
     /// </summary>
     /// <typeparam name="T">class</typeparam>
     public class Repository<T> : IRepository<T>
-         where T : class, IBaseModel, new()
+         where T : class, IMetric, new()
     {
         private readonly string _connectionString;
 
@@ -67,7 +67,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.Repository
         }
 
         /// <inheritdoc/>
-        public List<T> GetListFiltered(DateTime fromTime, DateTime toTime)
+        public List<T> GetFilteredList(DateTime fromTime, DateTime toTime)
         {
             using var connection = new SQLiteConnection(_connectionString);
             return connection.Query<T>("SELECT * FROM " + TableName + " WHERE Date >= @fromTime AND Date <= @toTime;",

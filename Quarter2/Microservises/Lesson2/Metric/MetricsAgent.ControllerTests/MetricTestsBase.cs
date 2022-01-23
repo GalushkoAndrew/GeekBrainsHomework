@@ -14,7 +14,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
     /// <typeparam name="T">class</typeparam>
     public abstract class MetricTestsBase<TEntity, TDto, T> : LoggerTestBase<T>
         where T : class
-        where TEntity : IBaseModel
+        where TEntity : IMetric
         where TDto : IBaseModelDto
     {
         private readonly Mock<IMetricsManager<TEntity, TDto>> _mockMetricsManager;
