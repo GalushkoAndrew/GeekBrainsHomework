@@ -7,15 +7,22 @@ using Xunit;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
+    /// <inheritdoc/>
     public class RamMetricControllerTests : MetricTestsBase<RamMetric, RamMetricDto, RamMetricController>
     {
         private readonly RamMetricController _controller;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
         public RamMetricControllerTests() : base()
         {
             _controller = new RamMetricController(Manager.Object, Logger.Object);
         }
 
+        /// <summary>
+        /// Unit test
+        /// </summary>
         [Fact]
         public void Test()
         {

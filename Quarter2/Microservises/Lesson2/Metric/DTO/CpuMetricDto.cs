@@ -1,12 +1,9 @@
-﻿using GeekBrains.Learn.Core.DTO.Base;
-using System;
-
-namespace GeekBrains.Learn.Core.DTO
+﻿namespace GeekBrains.Learn.Core.DTO
 {
-    public class CpuMetricDto : IMetricDto
+    /// <summary>
+    /// Cpu metrics dto
+    /// </summary>
+    public class CpuMetricDto : MetricDto
     {
-        public int Value { get; set; }
-        public DateTime Date { get; set; }
-        public int Id { get; set; }
     }
 }

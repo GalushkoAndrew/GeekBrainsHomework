@@ -19,11 +19,17 @@ namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
     {
         private readonly Mock<IMetricsManager<TEntity, TDto>> _mockMetricsManager;
 
+        /// <summary>
+        /// ctor
+        /// </summary>
         public MetricTestsBase() : base()
         {
             _mockMetricsManager = new Mock<IMetricsManager<TEntity, TDto>>();
         }
 
+        /// <summary>
+        /// <see cref="Mock"/> <see cref="IMetricsManager<>"/>
+        /// </summary>
         protected Mock<IMetricsManager<TEntity, TDto>> Manager { get { return _mockMetricsManager; } }
     }
 }

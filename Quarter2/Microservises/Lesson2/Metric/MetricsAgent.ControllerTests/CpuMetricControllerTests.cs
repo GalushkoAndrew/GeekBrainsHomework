@@ -7,14 +7,22 @@ using Xunit;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
 {
+    /// <inheritdoc/>
     public class CpuMetricControllerTests : MetricTestsBase<CpuMetric, CpuMetricDto, CpuMetricController>
     {
         private readonly CpuMetricController _controller;
+
+        /// <summary>
+        /// ctor
+        /// </summary>
         public CpuMetricControllerTests() : base()
         {
             _controller = new CpuMetricController(Manager.Object, Logger.Object);
         }
 
+        /// <summary>
+        /// Unit test
+        /// </summary>
         [Fact]
         public void Test()
         {

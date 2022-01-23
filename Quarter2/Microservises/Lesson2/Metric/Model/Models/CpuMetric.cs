@@ -1,12 +1,9 @@
-﻿using GeekBrains.Learn.Core.DAO.Model.Base;
-using System;
-
-namespace GeekBrains.Learn.Core.DAO.Model.Models
+﻿namespace GeekBrains.Learn.Core.DAO.Model.Models
 {
-    public class CpuMetric : IMetric
+    /// <summary>
+    /// Cpu metrics entity
+    /// </summary>
+    public class CpuMetric : Metric
     {
-        public int Value { get; set; }
-        public DateTime Date { get; set; }
-        public int Id { get; set; }
     }
 }

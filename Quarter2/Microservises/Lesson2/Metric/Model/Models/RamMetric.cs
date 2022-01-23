@@ -1,12 +1,9 @@
-﻿using GeekBrains.Learn.Core.DAO.Model.Base;
-using System;
-
-namespace GeekBrains.Learn.Core.DAO.Model.Models
+﻿namespace GeekBrains.Learn.Core.DAO.Model.Models
 {
-    public class RamMetric : IMetric
+    /// <summary>
+    /// Ram metrics entity
+    /// </summary>
+    public class RamMetric : Metric
     {
-        public int Value { get; set; }
-        public DateTime Date { get; set; }
-        public int Id { get; set; }
     }
 }
