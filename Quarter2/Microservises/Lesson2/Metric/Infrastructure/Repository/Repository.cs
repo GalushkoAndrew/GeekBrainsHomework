@@ -25,7 +25,6 @@ namespace GeekBrains.Learn.Core.Infrastructure.Repository
         public Repository(ConnectionString connectionString)
         {
             _connectionString = connectionString.Value;
-            CreateStructureDataBase();
         }
 
         private string TableName
@@ -83,12 +82,6 @@ namespace GeekBrains.Learn.Core.Infrastructure.Repository
                 new { entity.Value, entity.Date, entity.Id });
 
             return Get(entity.Id);
-        }
-
-        private void CreateStructureDataBase()
-        {
-            using var connection = new SQLiteConnection(_connectionString);
-            connection.Execute("CREATE TABLE IF NOT EXISTS " + TableName + "(Id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, Value INT, Date DATETIME);");
         }
     }
 }

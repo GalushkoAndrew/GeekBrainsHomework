@@ -1,8 +1,10 @@
 using System;
 using System.IO;
 using System.Reflection;
+using FluentMigrator.Runner;
 using GeekBrains.Learn.Core.DAO.Model;
 using GeekBrains.Learn.Core.Infrastructure.DI;
+using GeekBrains.Learn.Core.Infrastructure.Jobs;
 using GeekBrains.Learn.Core.Infrastructure.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +12,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Quartz;
+using Quartz.Impl;
+using Quartz.Spi;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.Controller
 {
@@ -50,11 +55,29 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller
 
             services.AddMapper();
 
-            services.AddSingleton(new ConnectionString(Configuration.GetSection("ConnectionString").Value));
+            var connectionString = Configuration.GetSection("ConnectionString").Value;
+            services.AddSingleton(new ConnectionString(connectionString));
+
+            services.AddFluentMigratorCore()
+                .ConfigureRunner(rb => rb
+                    .AddSQLite()
+                    .WithGlobalConnectionString(connectionString)
+                    .ScanIn(typeof(Startup).Assembly).For.Migrations())
+                .AddLogging(lb => lb.AddFluentMigratorConsole());
+
+            services.AddSingleton<IJobFactory, SingletonJobFactory>();
+
+            services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
+
+            services.AddJobs();
+
+            services.AddJobSchedule();
+
+            services.AddHostedService<QuartzHostedService>();
         }
 
         /// <inheritdoc/>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMigrationRunner migrationRunner)
         {
             if (env.IsDevelopment())
             {
@@ -69,6 +92,8 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller
             {
                 endpoints.MapControllers();
             });
+
+            migrationRunner.MigrateUp();
         }
     }
 }
