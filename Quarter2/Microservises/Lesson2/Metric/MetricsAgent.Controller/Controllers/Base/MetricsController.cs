@@ -15,7 +15,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
     /// <typeparam name="TDto">Dto</typeparam>
     [Route("[controller]")]
     [ApiController]
-    public abstract class MetricsController<TEntity, TDto> : ControllerBase, IMetricsController<TDto>
+    public abstract class MetricsController<TEntity, TDto> : ControllerBase
         where TEntity : IMetric
         where TDto : IMetricDto
     {
@@ -76,7 +76,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
         /// <summary>
         /// Get single entity
         /// </summary>
-        [HttpGet]
+        [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
             try

@@ -19,12 +19,10 @@ namespace GeekBrains.Learn.Core.Infrastructure.Repository
     {
         private readonly string _connectionString;
 
-        /// <summary>
-        /// ctor
-        /// </summary>
-        public Repository(ConnectionString connectionString)
+        /// <inheritdoc/>
+        public Repository(StartOptions startOptions)
         {
-            _connectionString = connectionString.Value;
+            _connectionString = startOptions.Value;
         }
 
         private string TableName

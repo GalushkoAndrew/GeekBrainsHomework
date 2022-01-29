@@ -1,6 +1,8 @@
-﻿using GeekBrains.Learn.Core.MetricsAgent.ControllerTests;
+﻿using System.Text.RegularExpressions;
+using GeekBrains.Learn.Core.Infrastructure.Manager.Interfaces;
+using GeekBrains.Learn.Core.MetricsAgent.ControllerTests;
 using GeekBrains.Learn.Core.MetricsManager.Controller;
-using Microsoft.AspNetCore.Mvc;
+using Moq;
 using Xunit;
 
 namespace GeekBrains.Learn.Core.ControllerMetricsManagerTests
@@ -8,14 +10,17 @@ namespace GeekBrains.Learn.Core.ControllerMetricsManagerTests
     /// <inheritdoc/>
     public class MetricsManagerControllerTests : LoggerTestBase<MetricsManagerController>
     {
-        private readonly IMetricsManagerController _controller;
+        private readonly MetricsManagerController _controller;
+        private readonly Mock<IAgentManager> _mockManager;
 
         /// <summary>
         /// ctor
         /// </summary>
         public MetricsManagerControllerTests()
         {
-            _controller = new MetricsManagerController(Logger.Object);
+            _mockManager = new Mock<IAgentManager>();
+
+            _controller = new MetricsManagerController(Logger.Object, _mockManager.Object);
         }
 
         /// <summary>
@@ -24,8 +29,11 @@ namespace GeekBrains.Learn.Core.ControllerMetricsManagerTests
         [Fact]
         public void TestList()
         {
-            var result = _controller.Get();
-            Assert.IsAssignableFrom<IActionResult>(result);
+            var regex = new Regex(@"Input parameters: ");
+            _mockManager.Setup(x => x.GetAll());
+            _controller.Get();
+            LoggerSetVerify(Logger, regex);
+            _mockManager.VerifyAll();
         }
     }
 }

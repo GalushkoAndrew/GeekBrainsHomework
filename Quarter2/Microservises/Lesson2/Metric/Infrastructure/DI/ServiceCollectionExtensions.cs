@@ -1,8 +1,12 @@
 ﻿using GeekBrains.Learn.Core.Infrastructure.Jobs;
 using GeekBrains.Learn.Core.Infrastructure.Manager;
+using GeekBrains.Learn.Core.Infrastructure.Manager.Interfaces;
 using GeekBrains.Learn.Core.Infrastructure.Repository;
 using GeekBrains.Learn.Core.Infrastructure.Repository.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using Quartz;
+using Quartz.Impl;
+using Quartz.Spi;
 
 namespace GeekBrains.Learn.Core.Infrastructure.DI
 {
@@ -19,6 +23,16 @@ namespace GeekBrains.Learn.Core.Infrastructure.DI
         {
             service.AddTransient(typeof(IMetricsManager<,>), typeof(MetricsManager<,>));
             service.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            service.AddTransient<IAgentRepository, AgentRepository>();
+            service.AddTransient<IAgentManager, AgentManager>();
+            service.AddTransient<IRegisterManager, RegisterManager>();
+
+            service.AddSingleton<IJobFactory, SingletonJobFactory>();
+            service.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
+
+            service.AddJobs();
+            service.AddJobSchedule();
+
             return service;
         }
 
@@ -47,6 +61,10 @@ namespace GeekBrains.Learn.Core.Infrastructure.DI
                 jobType: typeof(NetworkMetricJob),
                 cronExpression: "0/5 * * * * ?"));
 
+            service.AddSingleton(new JobSchedule(
+                jobType: typeof(AgentRegisterJob),
+                cronExpression: "0/5 * * * * ?"));
+
             return service;
         }
 
@@ -60,6 +78,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.DI
             service.AddSingleton<DotnetMetricJob>();
             service.AddSingleton<HddMetricJob>();
             service.AddSingleton<NetworkMetricJob>();
+            service.AddSingleton<AgentRegisterJob>();
 
             return service;
         }

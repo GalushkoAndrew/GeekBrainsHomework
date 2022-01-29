@@ -5,6 +5,7 @@ using FluentMigrator.Runner;
 using GeekBrains.Learn.Core.DAO.Model;
 using GeekBrains.Learn.Core.Infrastructure.DI;
 using GeekBrains.Learn.Core.Infrastructure.Jobs;
+using GeekBrains.Learn.Core.Infrastructure.Manager.Interfaces;
 using GeekBrains.Learn.Core.Infrastructure.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,9 +13,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using Quartz;
-using Quartz.Impl;
-using Quartz.Spi;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.Controller
 {
@@ -23,9 +21,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller
     {
         private readonly IWebHostEnvironment _environment;
 
-        /// <summary>
-        /// ctor
-        /// </summary>
+        /// <inheritdoc/>
         public Startup(IWebHostEnvironment environment)
         {
             _environment = environment;
@@ -55,8 +51,10 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller
 
             services.AddMapper();
 
-            var connectionString = Configuration.GetSection("ConnectionString").Value;
-            services.AddSingleton(new ConnectionString(connectionString));
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            var uri = Configuration.GetSection("Urls").Value;
+            var managerUri = Configuration.GetSection("ManagerUri").Value;
+            services.AddSingleton(new StartOptions(connectionString, uri, managerUri));
 
             services.AddFluentMigratorCore()
                 .ConfigureRunner(rb => rb
@@ -65,19 +63,13 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller
                     .ScanIn(typeof(Startup).Assembly).For.Migrations())
                 .AddLogging(lb => lb.AddFluentMigratorConsole());
 
-            services.AddSingleton<IJobFactory, SingletonJobFactory>();
-
-            services.AddSingleton<ISchedulerFactory, StdSchedulerFactory>();
-
-            services.AddJobs();
-
-            services.AddJobSchedule();
-
             services.AddHostedService<QuartzHostedService>();
+
+            services.AddHttpClient();
         }
 
         /// <inheritdoc/>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMigrationRunner migrationRunner)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMigrationRunner migrationRunner, IRegisterManager registerManager)
         {
             if (env.IsDevelopment())
             {

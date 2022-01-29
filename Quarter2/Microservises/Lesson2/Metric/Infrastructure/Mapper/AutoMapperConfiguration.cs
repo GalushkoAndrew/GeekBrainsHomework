@@ -22,6 +22,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.Mapper
                 a.CreateMap<HddMetric, HddMetricDto>().ReverseMap();
                 a.CreateMap<NetworkMetric, NetworkMetricDto>().ReverseMap();
                 a.CreateMap<RamMetric, RamMetricDto>().ReverseMap();
+                a.CreateMap<Agent, AgentDto>();
             });
         }
     }

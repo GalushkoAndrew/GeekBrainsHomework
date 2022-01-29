@@ -396,4 +396,5 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/visualstudio
 appsettings.Development.json
-metrics.db
+metricsAgent.db
+metricsManager.db

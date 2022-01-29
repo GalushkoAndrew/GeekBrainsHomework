@@ -20,9 +20,9 @@ namespace GeekBrains.Learn.Core.Infrastructure.Repository
         /// <summary>
         /// ctor
         /// </summary>
-        public RepositoryNoDapper(ConnectionString connectionString)
+        public RepositoryNoDapper(StartOptions startOptions)
         {
-            _connectionString = connectionString.Value;
+            _connectionString = startOptions.Value;
             CreateStructureDataBase();
         }
 

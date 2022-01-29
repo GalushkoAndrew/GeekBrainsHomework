@@ -34,7 +34,15 @@ namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests
         protected void VerifyLogger()
         {
             var regex = new Regex(@"Input parameters: fromTime = .+, toTime = .+");
-            Logger.Verify(
+            LoggerSetVerify(Logger, regex);
+        }
+
+        /// <summary>
+        /// Verify <see cref="ILogger"/> is called
+        /// </summary>
+        protected void LoggerSetVerify(Mock<ILogger<T>> logger, Regex regex)
+        {
+            logger.Verify(
                     m => m.Log(
                         LogLevel.Information,
                         It.IsAny<EventId>(),

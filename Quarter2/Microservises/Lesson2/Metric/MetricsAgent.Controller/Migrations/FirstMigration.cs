@@ -9,16 +9,6 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Migrations
     public class FirstMigration : Migration
     {
         /// <inheritdoc/>
-        public override void Down()
-        {
-            Delete.Table("CpuMetrics");
-            Delete.Table("DotnetMetrics");
-            Delete.Table("HddMetrics");
-            Delete.Table("NetworkMetrics");
-            Delete.Table("RamMetrics");
-        }
-
-        /// <inheritdoc/>
         public override void Up()
         {
             Create.Table("CpuMetrics")
@@ -41,6 +31,16 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Migrations
                 .WithColumn("Id").AsInt32().PrimaryKey().Identity()
                 .WithColumn("Value").AsInt32()
                 .WithColumn("Date").AsDateTime();
+        }
+
+        /// <inheritdoc/>
+        public override void Down()
+        {
+            Delete.Table("CpuMetrics");
+            Delete.Table("DotnetMetrics");
+            Delete.Table("HddMetrics");
+            Delete.Table("NetworkMetrics");
+            Delete.Table("RamMetrics");
         }
     }
 }
