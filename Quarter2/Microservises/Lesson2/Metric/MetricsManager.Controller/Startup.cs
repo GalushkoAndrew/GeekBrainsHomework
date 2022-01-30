@@ -68,7 +68,10 @@ namespace GeekBrains.Learn.Core.MetricAgent.Controller
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "Metrics manager");
+                });
             }
 
             app.UseRouting();
