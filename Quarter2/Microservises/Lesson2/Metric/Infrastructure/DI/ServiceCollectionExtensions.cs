@@ -64,7 +64,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.DI
 
             service.AddSingleton(new JobSchedule(
                 jobType: typeof(AgentRegisterJob),
-                cronExpression: "*/10 * * * *"));
+                cronExpression: "0/5 * * * * ?"));
 
             return service;
         }
