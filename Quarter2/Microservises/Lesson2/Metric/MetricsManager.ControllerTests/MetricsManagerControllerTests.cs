@@ -5,7 +5,7 @@ using GeekBrains.Learn.Core.MetricsManager.Controller;
 using Moq;
 using Xunit;
 
-namespace GeekBrains.Learn.Core.ControllerMetricsManagerTests
+namespace GeekBrains.Learn.Core.Tests.ControllerMetricsManager
 {
     /// <inheritdoc/>
     public class MetricsManagerControllerTests : LoggerTestBase<MetricsManagerController>

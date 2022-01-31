@@ -2,7 +2,7 @@
 using GeekBrains.Learn.Core.DTO.Base;
 using Microsoft.AspNetCore.Mvc;
 
-namespace GeekBrains.Learn.Core.MetricsAgent.Controller
+namespace GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers.Base
 {
     /// <summary>
     /// Metric controller interface

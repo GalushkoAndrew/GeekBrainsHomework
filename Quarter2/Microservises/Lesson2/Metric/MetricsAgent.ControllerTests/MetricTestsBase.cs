@@ -1,6 +1,6 @@
 ﻿using GeekBrains.Learn.Core.DAO.Model.Base;
 using GeekBrains.Learn.Core.DTO.Base;
-using GeekBrains.Learn.Core.Infrastructure.Manager;
+using GeekBrains.Learn.Core.Infrastructure.Manager.Interfaces;
 using Moq;
 
 namespace GeekBrains.Learn.Core.MetricsAgent.ControllerTests

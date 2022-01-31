@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GeekBrains.Learn.Core.Infrastructure.Jobs
+namespace GeekBrains.Learn.Core.Infrastructure.Jobs.Service
 {
     /// <inheritdoc/>
     public class JobSchedule

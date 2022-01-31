@@ -36,7 +36,8 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager
         /// <inheritdoc/>
         public List<AgentDto> GetAll()
         {
-            return _mapper.Map<List<AgentDto>>(_repository.GetAll());
+            var list = _repository.GetAll();
+            return _mapper.Map<List<AgentDto>>(list);
         }
 
         /// <inheritdoc/>

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using GeekBrains.Learn.Core.DAO.Model.Base;
 using GeekBrains.Learn.Core.DTO.Base;
 
-namespace GeekBrains.Learn.Core.Infrastructure.Manager
+namespace GeekBrains.Learn.Core.Infrastructure.Manager.Interfaces
 {
     /// <summary>
     /// Base metric manager interface
@@ -35,7 +35,7 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager
         /// <summary>
         /// Update entity
         /// </summary>
-        TDto Update(TDto entity);
+        TDto Update(TDto dto);
 
         /// <summary>
         /// Delete entity
