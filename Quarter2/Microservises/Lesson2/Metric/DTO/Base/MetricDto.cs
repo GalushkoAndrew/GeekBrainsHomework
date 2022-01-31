@@ -1,7 +1,6 @@
 ﻿using System;
-using GeekBrains.Learn.Core.DTO.Base;
 
-namespace GeekBrains.Learn.Core.DTO
+namespace GeekBrains.Learn.Core.DTO.Base
 {
     /// <summary>
     /// Base metric class

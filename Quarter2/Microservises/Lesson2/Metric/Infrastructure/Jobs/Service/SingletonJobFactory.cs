@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Quartz;
 using Quartz.Spi;
 
-namespace GeekBrains.Learn.Core.Infrastructure.Jobs
+namespace GeekBrains.Learn.Core.Infrastructure.Jobs.Service
 {
     /// <inheritdoc/>
     public class SingletonJobFactory : IJobFactory

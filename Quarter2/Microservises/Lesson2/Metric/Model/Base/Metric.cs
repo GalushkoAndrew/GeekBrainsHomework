@@ -1,7 +1,6 @@
 ﻿using System;
-using GeekBrains.Learn.Core.DAO.Model.Base;
 
-namespace GeekBrains.Learn.Core.DAO.Model.Models
+namespace GeekBrains.Learn.Core.DAO.Model.Base
 {
     /// <summary>
     /// Base metric class

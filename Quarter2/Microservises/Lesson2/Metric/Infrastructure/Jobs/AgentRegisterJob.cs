@@ -22,7 +22,11 @@ namespace GeekBrains.Learn.Core.Infrastructure.Jobs
         /// <inheritdoc/>
         public Task Execute(IJobExecutionContext context)
         {
-            _manager.Register();
+            var result = _manager.Register();
+            if (result)
+            {
+                context.Scheduler.PauseJob(context.JobDetail.Key);
+            }
 
             return Task.CompletedTask;
         }

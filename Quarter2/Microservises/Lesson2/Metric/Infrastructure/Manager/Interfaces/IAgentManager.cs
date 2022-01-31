@@ -58,6 +58,5 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager.Interfaces
         /// <param name="fromTime">begin time</param>
         /// <param name="toTime">end time</param>
         List<RamMetricDto> GetRamMetric(int agentId, DateTime fromTime, DateTime toTime);
-
     }
 }

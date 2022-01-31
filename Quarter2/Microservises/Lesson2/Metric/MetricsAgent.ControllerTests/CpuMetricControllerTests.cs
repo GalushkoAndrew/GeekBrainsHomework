@@ -1,7 +1,7 @@
 using System;
 using GeekBrains.Learn.Core.DAO.Model.Models;
 using GeekBrains.Learn.Core.DTO;
-using GeekBrains.Learn.Core.MetricsAgent.Controller;
+using GeekBrains.Learn.Core.MetricsAgent.Controller.Controllers;
 using Moq;
 using Xunit;
 

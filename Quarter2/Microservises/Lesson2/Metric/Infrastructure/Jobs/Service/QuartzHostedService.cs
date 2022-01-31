@@ -5,7 +5,7 @@ using Microsoft.Extensions.Hosting;
 using Quartz;
 using Quartz.Spi;
 
-namespace GeekBrains.Learn.Core.Infrastructure.Jobs
+namespace GeekBrains.Learn.Core.Infrastructure.Jobs.Service
 {
     /// <inheritdoc/>
     public class QuartzHostedService : IHostedService

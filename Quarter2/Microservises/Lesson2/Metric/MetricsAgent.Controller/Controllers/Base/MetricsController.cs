@@ -2,7 +2,7 @@
 using System.Text.Json;
 using GeekBrains.Learn.Core.DAO.Model.Base;
 using GeekBrains.Learn.Core.DTO.Base;
-using GeekBrains.Learn.Core.Infrastructure.Manager;
+using GeekBrains.Learn.Core.Infrastructure.Manager.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 

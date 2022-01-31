@@ -4,8 +4,7 @@ using System.Reflection;
 using FluentMigrator.Runner;
 using GeekBrains.Learn.Core.DAO.Model;
 using GeekBrains.Learn.Core.Infrastructure.DI;
-using GeekBrains.Learn.Core.Infrastructure.Jobs;
-using GeekBrains.Learn.Core.Infrastructure.Manager.Interfaces;
+using GeekBrains.Learn.Core.Infrastructure.Jobs.Service;
 using GeekBrains.Learn.Core.Infrastructure.Mapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -69,7 +68,7 @@ namespace GeekBrains.Learn.Core.MetricsAgent.Controller
         }
 
         /// <inheritdoc/>
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMigrationRunner migrationRunner, IRegisterManager registerManager)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IMigrationRunner migrationRunner)
         {
             if (env.IsDevelopment())
             {

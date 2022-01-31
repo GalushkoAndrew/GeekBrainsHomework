@@ -2,7 +2,6 @@
 using System.Net.Http;
 using GeekBrains.Learn.Core.DAO.Model;
 using GeekBrains.Learn.Core.Infrastructure.Manager.Interfaces;
-using Microsoft.AspNetCore.Http;
 
 namespace GeekBrains.Learn.Core.Infrastructure.Manager
 {
@@ -12,14 +11,12 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager
     public class RegisterManager : IRegisterManager
     {
         private readonly IHttpClientFactory _clientFactory;
-        private readonly IHttpContextAccessor _context;
         private readonly StartOptions _startOptions;
 
         /// <inheritdoc/>
-        public RegisterManager(IHttpClientFactory httpClientFactory, IHttpContextAccessor context, StartOptions startOptions)
+        public RegisterManager(IHttpClientFactory httpClientFactory, StartOptions startOptions)
         {
             _clientFactory = httpClientFactory;
-            _context = context;
             _startOptions = startOptions;
         }
 
