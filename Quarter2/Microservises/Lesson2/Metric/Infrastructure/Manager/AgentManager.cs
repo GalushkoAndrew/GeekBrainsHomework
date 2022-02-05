@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Net.Http;
 using System.Text.Json;
 using AutoMapper;
@@ -79,7 +80,14 @@ namespace GeekBrains.Learn.Core.Infrastructure.Manager
             }
 
             var client = _clientFactory.CreateClient(metricName + "Client");
-            var request = new HttpRequestMessage(HttpMethod.Get, entity.Uri + "/" + metricName + $"Metric/from/{fromTime}/to/{toTime}");
+
+            string fromString = fromTime.ToString("s", DateTimeFormatInfo.InvariantInfo);
+            string toString = toTime.ToString("s", DateTimeFormatInfo.InvariantInfo);
+
+            var request = new HttpRequestMessage(
+                HttpMethod.Get,
+                $"{entity.Uri}/{metricName}Metric/from/{fromString}/to/{toString}");
+
             var response = client.SendAsync(request).Result;
 
             if (response.IsSuccessStatusCode)

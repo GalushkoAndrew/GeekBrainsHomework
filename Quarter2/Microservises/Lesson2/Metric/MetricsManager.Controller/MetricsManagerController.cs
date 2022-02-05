@@ -92,7 +92,7 @@ namespace GeekBrains.Learn.Core.MetricsManager.Controller
         /// <param name="agentId">agent id</param>
         /// <param name="fromTime">begin time</param>
         /// <param name="toTime">end time</param>
-        [HttpGet("dotnet/from/{fromTime}/to/{toTime}")]
+        [HttpGet("dotnet/agent/{agentId}/from/{fromTime}/to/{toTime}")]
         public IActionResult GetDotnetMetricsFromAgent(
             [FromRoute] int agentId,
             [FromRoute] DateTime fromTime,
@@ -116,7 +116,7 @@ namespace GeekBrains.Learn.Core.MetricsManager.Controller
         /// <param name="agentId">agent id</param>
         /// <param name="fromTime">begin time</param>
         /// <param name="toTime">end time</param>
-        [HttpGet("hdd/from/{fromTime}/to/{toTime}")]
+        [HttpGet("hdd/agent/{agentId}/from/{fromTime}/to/{toTime}")]
         public IActionResult GetHddMetricsFromAgent(
             [FromRoute] int agentId,
             [FromRoute] DateTime fromTime,
@@ -140,7 +140,7 @@ namespace GeekBrains.Learn.Core.MetricsManager.Controller
         /// <param name="agentId">agent id</param>
         /// <param name="fromTime">begin time</param>
         /// <param name="toTime">end time</param>
-        [HttpGet("network/from/{fromTime}/to/{toTime}")]
+        [HttpGet("network/agent/{agentId}/from/{fromTime}/to/{toTime}")]
         public IActionResult GetNetworkMetricsFromAgent(
             [FromRoute] int agentId,
             [FromRoute] DateTime fromTime,
@@ -164,7 +164,7 @@ namespace GeekBrains.Learn.Core.MetricsManager.Controller
         /// <param name="agentId">agent id</param>
         /// <param name="fromTime">begin time</param>
         /// <param name="toTime">end time</param>
-        [HttpGet("ram/from/{fromTime}/to/{toTime}")]
+        [HttpGet("ram/agent/{agentId}/from/{fromTime}/to/{toTime}")]
         public IActionResult GetRamMetricsFromAgent(
             [FromRoute] int agentId,
             [FromRoute] DateTime fromTime,
