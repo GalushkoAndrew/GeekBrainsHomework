@@ -28,16 +28,16 @@
   <script>
     "use strict";
     
-	let inputNumber = +prompt("Введите число");
-	
-	let rest1 = inputNumber % 10;
+    const inputNumber = +prompt("Введите число");
+    
+    const rest1 = inputNumber % 10;
 
-	let rest10 = (inputNumber - rest1) / 10 % 10;
+    const rest10 = (inputNumber - rest1) / 10 % 10;
 
-	let rest100 = (inputNumber - rest1 - rest10 * 10) / 100 % 10;
-	
-	alert(`В числе ${inputNumber} количество сотен: `
-		+ `${rest100}, десятков: ${rest10}, единиц: ${rest1}`);
+    const rest100 = (inputNumber - rest1 - rest10 * 10) / 100 % 10;
+    
+    alert(`В числе ${inputNumber} количество сотен: `
+        + `${rest100}, десятков: ${rest10}, единиц: ${rest1}`);
   </script>
 </body>
 </html>

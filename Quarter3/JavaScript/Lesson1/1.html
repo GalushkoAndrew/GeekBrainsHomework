@@ -22,12 +22,12 @@
   <script>
     "use strict";
     
-    let degreesCelsius = +prompt("Введите температуру в градусах цельсия");
-	
-	let degreesFahrenheit = degreesCelsius * (9 / 5) + 32;
-	
-	alert(`Температура по цельсию: ${degreesCelsius}.`
-	+ ` Температура по фаренгейту: ${degreesFahrenheit}.`);
+    const degreesCelsius = +prompt("Введите температуру в градусах цельсия");
+    
+    const degreesFahrenheit = (degreesCelsius * (9 / 5) + 32).toFixed(1);
+    
+    alert(`Температура по цельсию: ${degreesCelsius}.`
+    + ` Температура по фаренгейту: ${degreesFahrenheit}.`);
   </script>
 </body>
 </html>
