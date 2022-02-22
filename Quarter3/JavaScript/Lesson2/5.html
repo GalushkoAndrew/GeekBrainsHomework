@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Homework</title>
+</head>
+<body>
+<!--
+Обязательное задание.
+
+Необходимо скопировать и вставить в данный скрипт все функции из 4 задания.
+Необходимо реализовать функцию:
+mathOperation(arg1, arg2, operation);
+Параметры:
+arg1 - первое число.
+arg2 - второе число.
+operation - строка, которая содержит один символ из: "+", "-", "*", "/".
+Функция mathOperation должна вернуть результат операции, который был передан в
+параметр operation для двух первых аргументов (arg1 и arg2).
+Функция mathOperation должна использовать для вычисления функции из 4 задания.
+
+Примеры вызова функции:
+console.log(mathOperation(5, 3, "+")); // 8
+console.log(mathOperation(5, 3, ":)")); // NaN
+
+Функции mathOperation всегда передаются корректные числа, проверки на NaN,
+Infinity делать не нужно, однако, в случае если был передан некорректный
+аргумент в параметр operation, необходимо вернуть NaN.
+
+Необходимо для всех функций прописать комментарии jsdoc https://jsdoc.app/.
+-->
+<script>
+  "use strict";
+
+  /**
+   * Функция производит указанное вычисление между двумя числами
+   * @param {number} первое число
+   * @param {number} второе число
+   * @param {string} арифметическая операция
+   * @returns {number} результат арифметоческой операции между двумя числами
+   */
+  function mathOperation(arg1, arg2, operation) {
+    switch(operation) {
+      case "+":
+        return getSum(arg1, arg2);
+      case "-":
+        return getDifference(arg1, arg2);
+      case "*":
+        return getCross(arg1, arg2);
+      case "/":
+        return getDivision(arg1, arg2);
+      default:
+        return NaN;
+   }
+  }
+
+  /**
+   * Функция складывает 2 числа
+   * @param {number} первое число
+   * @param {number} второе число
+   * @returns {number} результат сложения
+   */
+  function getSum(a, b) {
+    return a + b;
+  }
+  
+  /**
+   * Функция вычитает из большего числа меньшее
+   * @param {number} первое число
+   * @param {number} второе число
+   * @returns {number} результат вычитания
+   */
+  function getDifference(a, b) {
+    if (a > b) {
+      return a - b;
+    }
+    
+    return b - a;
+  }
+  
+  /**
+   * Функция умножает 2 числа
+   * @param {number} первое число
+   * @param {number} второе число
+   * @returns {number} результат умножения
+   */
+  function getCross(a, b) {
+    return a * b;
+  }
+  
+  /**
+   * Функция делит одно число на другое
+   * @param {number} первое число
+   * @param {number} второе число
+   * @returns {number} результат деления
+   */
+  function getDivision(a, b) {
+    return a / b;
+  }
+</script>
+</body>
+</html>
