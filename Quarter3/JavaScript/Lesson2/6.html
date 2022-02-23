@@ -41,16 +41,16 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
     const rest1 = Math.round(count % 10);
     const rest10 = Math.round(count % 100);
     
-	if (rest10 < 5 || rest10 > 20) {
-	  if (rest1 === 1) {
-	    return one;
-	  }
-	  
-	  if (rest1 < 5) {
-	    return two;
-	  }
-	}
-	
+    if (rest10 < 5 || rest10 > 20) {
+      if (rest1 === 1) {
+        return one;
+      }
+      
+      if (rest1 < 5) {
+        return two;
+      }
+    }
+    
     return five;
   }
 
