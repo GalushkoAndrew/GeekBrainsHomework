@@ -38,9 +38,8 @@ console.log(declinationOfNumber(5, "стул", "стула", "стульев"));
       return undefined;
     }
 
-    let rest1 = Math.round(count % 10);
-    
-    let rest10 = Math.round(count % 100);
+    const rest1 = Math.round(count % 10);
+    const rest10 = Math.round(count % 100);
     
 	if (rest10 < 5 || rest10 > 20) {
 	  if (rest1 === 1) {
