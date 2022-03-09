@@ -44,19 +44,9 @@
     },
   ];
   
-  console.log(products.filter(function(p) {
-    return "photos" in p && p.photos.length > 0;
-  }));
+  console.log(products.filter(p =>  "photos" in p && p.photos.length > 0));
   
-  products.sort(function(p1, p2) {
-    if (p1.price > p2.price) {
-      return 1;
-    }
-    if (p2.price > p1.price) {
-      return -1;
-    }
-    return 0;
-  });
+  products.sort((p1, p2) => p1.price - p2.price);
   
   console.log(products);
   /* ps в задании 1 есть логическая ошибка.
