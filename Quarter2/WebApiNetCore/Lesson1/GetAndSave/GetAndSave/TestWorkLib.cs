@@ -89,8 +89,7 @@ namespace GeekBrains.Learn.GetAndSave
         /// <param name="uri">URL</param>
         private HttpResponseMessage GetHttpResponseMessage(string uri)
         {
-            HttpClient client = new HttpClient();
-
+            using var client = new HttpClient();
             try
             {
                 return client.GetAsync(uri).Result;
