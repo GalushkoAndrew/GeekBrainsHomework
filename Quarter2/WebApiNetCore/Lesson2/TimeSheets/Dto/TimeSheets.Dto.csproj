@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
 	<CodeAnalysisRuleSet>..\StyleCopAnalyzersDefault.ruleset</CodeAnalysisRuleSet>
-	<RootNamespace>GeekBrains.Learn.Dto</RootNamespace>
+	<RootNamespace>GeekBrains.Learn.TimeSheets.Dto</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

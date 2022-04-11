@@ -1,4 +1,4 @@
-﻿namespace GeekBrains.Learn.Dto
+﻿namespace GeekBrains.Learn.TimeSheets.Dto
 {
     /// <summary>
     /// Invoice report row

@@ -1,4 +1,4 @@
-﻿using GeekBrains.Learn.Dto.Base;
+﻿using GeekBrains.Learn.TimeSheets.Dto.Base;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeekBrains.Learn.TimeSheets.Controllers.Base

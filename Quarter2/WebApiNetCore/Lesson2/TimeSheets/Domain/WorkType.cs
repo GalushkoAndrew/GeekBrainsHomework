@@ -1,6 +1,6 @@
-﻿using GeekBrains.Learn.Domain.Base;
+﻿using GeekBrains.Learn.TimeSheets.Domain.Base;
 
-namespace GeekBrains.Learn.Domain
+namespace GeekBrains.Learn.TimeSheets.Domain
 {
     /// <summary>
     /// Work type

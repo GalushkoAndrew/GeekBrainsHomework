@@ -1,4 +1,4 @@
-﻿namespace GeekBrains.Learn.Domain.Base
+﻿namespace GeekBrains.Learn.TimeSheets.Domain.Base
 {
     /// <summary>
     /// Base class for entity. Include field Id

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace GeekBrains.Learn.Dto
+namespace GeekBrains.Learn.TimeSheets.Dto
 {
     /// <summary>
     /// Invoice report

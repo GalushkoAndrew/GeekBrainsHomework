@@ -1,4 +1,4 @@
-﻿namespace GeekBrains.Learn.Dto.Base
+﻿namespace GeekBrains.Learn.TimeSheets.Dto.Base
 {
     /// <summary>
     /// Base dto class

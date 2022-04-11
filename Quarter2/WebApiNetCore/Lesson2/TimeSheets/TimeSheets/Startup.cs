@@ -1,8 +1,13 @@
+using System;
+using System.IO;
+using System.Reflection;
+using GeekBrains.Learn.TimeSheets.Infrastructure.DI;
+using GeekBrains.Learn.TimeSheets.Infrastructure.Mappings;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OpenApi.Models;
 
 namespace GeekBrains.Learn.TimeSheets
 {
@@ -12,6 +17,19 @@ namespace GeekBrains.Learn.TimeSheets
         /// <inheritdoc/>
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllers();
+
+            services.AddServices();
+
+            services.AddMapper();
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Method's info", Version = "v1" });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.XML";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
+            });
         }
 
         /// <inheritdoc/>
@@ -20,16 +38,18 @@ namespace GeekBrains.Learn.TimeSheets
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "TimeSheets");
+                });
             }
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Start work");
-                });
+                endpoints.MapControllers();
             });
         }
     }

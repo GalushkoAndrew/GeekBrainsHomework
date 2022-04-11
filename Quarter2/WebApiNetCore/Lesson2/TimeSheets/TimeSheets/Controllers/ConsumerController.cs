@@ -1,5 +1,5 @@
-﻿using GeekBrains.Learn.Dto;
-using GeekBrains.Learn.TimeSheets.Controllers.Base;
+﻿using GeekBrains.Learn.TimeSheets.Controllers.Base;
+using GeekBrains.Learn.TimeSheets.Dto;
 
 namespace GeekBrains.Learn.TimeSheets.Controllers
 {

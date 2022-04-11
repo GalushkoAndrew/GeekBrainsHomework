@@ -1,6 +1,6 @@
-﻿using GeekBrains.Learn.Dto.Base;
+﻿using GeekBrains.Learn.TimeSheets.Dto.Base;
 
-namespace GeekBrains.Learn.Dto
+namespace GeekBrains.Learn.TimeSheets.Dto
 {
     /// <summary>
     /// Contract's worktype
