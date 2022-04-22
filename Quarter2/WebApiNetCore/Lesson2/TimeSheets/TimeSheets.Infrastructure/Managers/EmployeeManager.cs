@@ -33,7 +33,8 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.Managers
         /// <inheritdoc/>
         public void Delete(int id)
         {
-            _repository.Delete(id);
+            var entity = _repository.GetById(id);
+            _repository.Delete(entity);
         }
 
         /// <inheritdoc/>

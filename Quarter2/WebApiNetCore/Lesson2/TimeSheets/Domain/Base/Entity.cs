@@ -1,4 +1,6 @@
-﻿namespace GeekBrains.Learn.TimeSheets.Domain.Base
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace GeekBrains.Learn.TimeSheets.Domain.Base
 {
     /// <summary>
     /// Base class for entity. Include field Id
@@ -6,6 +8,7 @@
     public abstract class Entity : IEntity
     {
         /// <inheritdoc/>
+        [Key]
         public int Id { get; set; }
     }
 }

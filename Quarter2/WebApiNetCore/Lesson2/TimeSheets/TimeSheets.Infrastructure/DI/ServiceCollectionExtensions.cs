@@ -19,7 +19,7 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.DI
         {
             service.AddTransient<IEmployeeRepository, EmployeeRepository>();
             service.AddTransient<IEmployeeManager, EmployeeManager>();
-
+            service.AddTransient(typeof(IRepository<>), typeof(Repository<>));
             return service;
         }
     }
