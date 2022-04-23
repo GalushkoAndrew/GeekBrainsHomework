@@ -18,14 +18,14 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.Managers.Interfaces
         /// Returns dto list filtered by part of name
         /// </summary>
         /// <param name="term">part of name</param>
-        ICollection<EmployeeDto> GetByTerm(string term);
+        IReadOnlyCollection<EmployeeDto> GetByTerm(string term);
 
         /// <summary>
         /// Returns dto list using pagination
         /// </summary>
         /// <param name="skip">how much records to skip</param>
         /// <param name="take">records count to return</param>
-        ICollection<EmployeeDto> GetPageList(int skip, int take);
+        IReadOnlyCollection<EmployeeDto> GetPageList(int skip, int take);
 
         /// <summary>
         /// Create entity

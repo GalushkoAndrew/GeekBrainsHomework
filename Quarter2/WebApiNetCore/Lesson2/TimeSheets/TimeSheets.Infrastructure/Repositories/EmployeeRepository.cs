@@ -16,7 +16,7 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.Repositories
         }
 
         /// <inheritdoc/>
-        public ICollection<Employee> GetByTerm(string term)
+        public IReadOnlyCollection<Employee> GetByTerm(string term)
         {
             return _dbContext.Employees.Where(x => x.Name.Contains(term)).ToList();
         }

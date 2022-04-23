@@ -44,15 +44,15 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.Managers
         }
 
         /// <inheritdoc/>
-        public ICollection<EmployeeDto> GetByTerm(string term)
+        public IReadOnlyCollection<EmployeeDto> GetByTerm(string term)
         {
-            return _mapper.Map<ICollection<EmployeeDto>>(_repository.GetByTerm(term));
+            return _mapper.Map<IReadOnlyCollection<EmployeeDto>>(_repository.GetByTerm(term));
         }
 
         /// <inheritdoc/>
-        public ICollection<EmployeeDto> GetPageList(int skip, int take)
+        public IReadOnlyCollection<EmployeeDto> GetPageList(int skip, int take)
         {
-            return _mapper.Map<ICollection<EmployeeDto>>(_repository.GetPageList(skip, take));
+            return _mapper.Map<IReadOnlyCollection<EmployeeDto>>(_repository.GetPageList(skip, take));
         }
 
         /// <inheritdoc/>

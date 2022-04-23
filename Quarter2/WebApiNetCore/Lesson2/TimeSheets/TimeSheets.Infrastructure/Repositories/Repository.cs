@@ -55,7 +55,7 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.Repositories
         }
 
         /// <inheritdoc/>
-        public ICollection<TEntity> GetPageList(int skip, int take)
+        public IReadOnlyCollection<TEntity> GetPageList(int skip, int take)
         {
             return Entities.Skip(skip).Take(take).ToList();
         }

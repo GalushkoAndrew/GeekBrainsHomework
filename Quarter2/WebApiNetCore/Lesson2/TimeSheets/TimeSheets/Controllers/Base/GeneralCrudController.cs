@@ -1,4 +1,5 @@
 ﻿using GeekBrains.Learn.TimeSheets.Dto.Base;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeekBrains.Learn.TimeSheets.Controllers.Base
@@ -8,6 +9,7 @@ namespace GeekBrains.Learn.TimeSheets.Controllers.Base
     /// </summary>
     /// <typeparam name="TDto">dto</typeparam>
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public abstract class GeneralCrudController<TDto> : ControllerBase
         where TDto : IdentifierDto

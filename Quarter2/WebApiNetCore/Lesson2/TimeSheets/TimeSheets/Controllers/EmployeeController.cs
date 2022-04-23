@@ -1,6 +1,7 @@
 ﻿using System;
 using GeekBrains.Learn.TimeSheets.Dto;
 using GeekBrains.Learn.TimeSheets.Infrastructure.Managers.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeekBrains.Learn.TimeSheets.Controllers
@@ -9,6 +10,7 @@ namespace GeekBrains.Learn.TimeSheets.Controllers
     /// Employee controller
     /// </summary>
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public sealed class EmployeeController : ControllerBase
     {

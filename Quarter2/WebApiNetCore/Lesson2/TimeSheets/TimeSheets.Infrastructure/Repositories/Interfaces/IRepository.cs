@@ -21,7 +21,7 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.Repositories.Interfaces
         /// </summary>
         /// <param name="skip">how much records to skip</param>
         /// <param name="take">records count to return</param>
-        ICollection<TEntity> GetPageList(int skip, int take);
+        IReadOnlyCollection<TEntity> GetPageList(int skip, int take);
 
         /// <summary>
         /// Create entity

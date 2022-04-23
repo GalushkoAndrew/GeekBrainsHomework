@@ -2,6 +2,7 @@
 using GeekBrains.Learn.TimeSheets.Infrastructure.Managers.Interfaces;
 using GeekBrains.Learn.TimeSheets.Infrastructure.Repositories;
 using GeekBrains.Learn.TimeSheets.Infrastructure.Repositories.Interfaces;
+using GeekBrains.Learn.TimeSheets.Infrastructure.Services.Auth;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace GeekBrains.Learn.TimeSheets.Infrastructure.DI
@@ -20,6 +21,7 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.DI
             service.AddTransient<IEmployeeRepository, EmployeeRepository>();
             service.AddTransient<IEmployeeManager, EmployeeManager>();
             service.AddTransient(typeof(IRepository<>), typeof(Repository<>));
+            service.AddSingleton<IUserService, UserService>();
             return service;
         }
     }
