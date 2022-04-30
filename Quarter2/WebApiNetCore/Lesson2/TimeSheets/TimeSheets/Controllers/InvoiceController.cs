@@ -1,22 +1,18 @@
 ﻿using GeekBrains.Learn.TimeSheets.Controllers.Base;
+using GeekBrains.Learn.TimeSheets.Domain;
 using GeekBrains.Learn.TimeSheets.Dto;
-using Microsoft.AspNetCore.Mvc;
+using GeekBrains.Learn.TimeSheets.Infrastructure.Managers.Base;
 
 namespace GeekBrains.Learn.TimeSheets.Controllers
 {
     /// <summary>
     /// Invoice controller
     /// </summary>
-    public class InvoiceController : GeneralCrudController<InvoiceDto>
+    public class InvoiceController : GeneralCrudController<Invoice, InvoiceDto>
     {
-        /// <summary>
-        /// Get report of single entity
-        /// </summary>
-        /// <returns>InvoiceReportDto</returns>
-        [HttpGet("report/{id}")]
-        public IActionResult GetReport(int id)
+        /// <inheritdoc/>
+        public InvoiceController(IManagerBase<Invoice, InvoiceDto> manager) : base(manager)
         {
-            return Ok();
         }
     }
 }

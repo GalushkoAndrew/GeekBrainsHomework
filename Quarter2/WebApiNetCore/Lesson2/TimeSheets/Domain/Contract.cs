@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using GeekBrains.Learn.TimeSheets.Domain.Base;
 
 namespace GeekBrains.Learn.TimeSheets.Domain
 {
     /// <summary>
-    /// Contract's header
+    /// Заказ
     /// </summary>
     public class Contract : Entity
     {
@@ -32,5 +33,10 @@ namespace GeekBrains.Learn.TimeSheets.Domain
         /// Approval mark
         /// </summary>
         public int IsApproved { get; set; }
+
+        /// <summary>
+        /// Specification
+        /// </summary>
+        public virtual ICollection<ContractWorkType> Rows { get; set; }
     }
 }

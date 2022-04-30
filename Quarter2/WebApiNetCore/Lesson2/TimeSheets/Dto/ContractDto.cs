@@ -32,6 +32,6 @@ namespace GeekBrains.Learn.TimeSheets.Dto
         /// <summary>
         /// Work types with price
         /// </summary>
-        public List<ContractWorkTypeDto> Rows { get; set; }
+        public virtual ICollection<ContractWorkTypeDto> Rows { get; set; }
     }
 }

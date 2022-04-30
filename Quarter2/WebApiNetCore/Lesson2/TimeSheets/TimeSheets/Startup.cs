@@ -88,9 +88,11 @@ namespace GeekBrains.Learn.TimeSheets
                 });
             });
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<TimeSheetsDbContext>(options =>
-                options.UseNpgsql(connectionString,
-                b => b.MigrationsAssembly("TimeSheets.RestApi")));
+            services.AddDbContext<TimeSheetsDbContext>(options => {
+                options
+                    .UseLazyLoadingProxies()
+                    .UseNpgsql(connectionString, b => b.MigrationsAssembly("TimeSheets.RestApi"));
+            });
         }
 
         /// <inheritdoc/>

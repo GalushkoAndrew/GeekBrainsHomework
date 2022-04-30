@@ -57,7 +57,7 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.Repositories
         /// <inheritdoc/>
         public IReadOnlyCollection<TEntity> GetPageList(int skip, int take)
         {
-            return Entities.Skip(skip).Take(take).ToList();
+            return Entities.OrderBy(x => x.Id).Skip(skip).Take(take).ToList();
         }
 
         /// <inheritdoc/>

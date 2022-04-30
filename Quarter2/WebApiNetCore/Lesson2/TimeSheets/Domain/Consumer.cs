@@ -3,7 +3,7 @@
 namespace GeekBrains.Learn.TimeSheets.Domain
 {
     /// <summary>
-    /// Consumer
+    /// Заказчик
     /// </summary>
     public class Consumer : Entity
     {

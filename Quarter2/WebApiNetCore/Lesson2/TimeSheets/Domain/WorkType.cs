@@ -3,7 +3,7 @@
 namespace GeekBrains.Learn.TimeSheets.Domain
 {
     /// <summary>
-    /// Work type
+    /// Тип работ
     /// </summary>
     public class WorkType : Entity
     {

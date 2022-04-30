@@ -3,7 +3,7 @@
 namespace GeekBrains.Learn.TimeSheets.Domain
 {
     /// <summary>
-    /// Invoice, body
+    /// Акт выполненных работ. Спецификация
     /// </summary>
     public class InvoiceRow : Entity
     {

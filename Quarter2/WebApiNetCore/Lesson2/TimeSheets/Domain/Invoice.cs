@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using GeekBrains.Learn.TimeSheets.Domain.Base;
 
 namespace GeekBrains.Learn.TimeSheets.Domain
 {
     /// <summary>
-    /// Invoice, header
+    /// Акт выполненных работ. Заголовок
     /// </summary>
     public class Invoice : Entity
     {
@@ -12,5 +13,10 @@ namespace GeekBrains.Learn.TimeSheets.Domain
         /// Invoice's date
         /// </summary>
         public DateTime Date { get; set; }
+
+        /// <summary>
+        /// Specification
+        /// </summary>
+        public virtual ICollection<InvoiceRow> Rows { get; set; }
     }
 }

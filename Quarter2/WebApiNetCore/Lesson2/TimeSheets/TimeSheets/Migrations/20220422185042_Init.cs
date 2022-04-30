@@ -3,8 +3,10 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace GeekBrains.Learn.TimeSheets.RestApi.Migrations
 {
+    /// <inheritdoc/>
     public partial class Init : Migration
     {
+        /// <inheritdoc/>
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
@@ -21,6 +23,7 @@ namespace GeekBrains.Learn.TimeSheets.RestApi.Migrations
                 });
         }
 
+        /// <inheritdoc/>
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

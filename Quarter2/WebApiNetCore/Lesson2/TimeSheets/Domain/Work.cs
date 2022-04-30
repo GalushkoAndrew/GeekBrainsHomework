@@ -4,7 +4,7 @@ using GeekBrains.Learn.TimeSheets.Domain.Base;
 namespace GeekBrains.Learn.TimeSheets.Domain
 {
     /// <summary>
-    /// Work
+    /// Выполненные работы
     /// </summary>
     public class Work : Entity
     {

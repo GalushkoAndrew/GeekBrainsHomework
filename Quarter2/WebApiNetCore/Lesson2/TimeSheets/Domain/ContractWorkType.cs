@@ -3,8 +3,7 @@
 namespace GeekBrains.Learn.TimeSheets.Domain
 {
     /// <summary>
-    /// Contract's body
-    /// Link with work type
+    /// Прайс на виды работ по заказу. Единицы: тугриков в час.
     /// </summary>
     public class ContractWorkType : Entity
     {
@@ -12,11 +11,6 @@ namespace GeekBrains.Learn.TimeSheets.Domain
         /// Contract Id
         /// </summary>
         public int ContractId { get; set; }
-
-        /// <summary>
-        /// Contract
-        /// </summary>
-        public virtual Contract Contract { get; set; }
 
         /// <summary>
         /// WorkType Id

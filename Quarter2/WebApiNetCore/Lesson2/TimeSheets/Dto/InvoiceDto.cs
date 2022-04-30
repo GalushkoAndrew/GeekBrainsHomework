@@ -17,6 +17,6 @@ namespace GeekBrains.Learn.TimeSheets.Dto
         /// <summary>
         /// Works
         /// </summary>
-        public List<InvoiceRowDto> Rows { get; set; }
+        public virtual List<InvoiceRowDto> Rows { get; set; }
     }
 }

@@ -4,6 +4,9 @@ using GeekBrains.Learn.TimeSheets.Domain;
 using GeekBrains.Learn.TimeSheets.Dto;
 using GeekBrains.Learn.TimeSheets.Infrastructure.Managers.Interfaces;
 using GeekBrains.Learn.TimeSheets.Infrastructure.Repositories.Interfaces;
+using GeekBrains.Learn.TimeSheets.Infrastructure.Services.Operations;
+using GeekBrains.Learn.TimeSheets.Infrastructure.Services.Validation.Base;
+using GeekBrains.Learn.TimeSheets.Infrastructure.Services.Validation.Requests.Employee;
 
 namespace GeekBrains.Learn.TimeSheets.Infrastructure.Managers
 {
@@ -14,27 +17,44 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.Managers
     {
         private readonly IEmployeeRepository _repository;
         private readonly IMapper _mapper;
+        private readonly ICreateEmployeeValidator _createValidator;
+        private readonly IUpdateEmployeeValidator _updateValidator;
+        private readonly IDeleteEmployeeValidator _deleteValidator;
+        private readonly IUpdateBase<Employee, EmployeeDto> _updateOperation;
+        private readonly IDeleteBase<Employee> _deleteOperation;
+        private readonly ICreateBase<Employee, EmployeeDto> _createOperation;
 
         /// <inheritdoc/>
         public EmployeeManager(
             IEmployeeRepository repository,
-            IMapper mapper)
+            IMapper mapper,
+            ICreateEmployeeValidator createValidator,
+            IUpdateEmployeeValidator updateValidator,
+            IDeleteEmployeeValidator deleteValidator,
+            IUpdateBase<Employee, EmployeeDto> updateOperation,
+            IDeleteBase<Employee> deleteOperation,
+            ICreateBase<Employee, EmployeeDto> createOperation)
         {
             _repository = repository;
             _mapper = mapper;
+            _createValidator = createValidator;
+            _updateValidator = updateValidator;
+            _deleteValidator = deleteValidator;
+            _updateOperation = updateOperation;
+            _deleteOperation = deleteOperation;
+            _createOperation = createOperation;
         }
 
         /// <inheritdoc/>
-        public void Create(EmployeeDto entity)
+        public IOperationResult Create(EmployeeDto dto)
         {
-            _repository.Create(_mapper.Map<Employee>(entity));
+            return _createOperation.Create(dto, _createValidator);
         }
 
         /// <inheritdoc/>
-        public void Delete(int id)
+        public IOperationResult Delete(int id)
         {
-            var entity = _repository.GetById(id);
-            _repository.Delete(entity);
+            return _deleteOperation.Delete(id, _deleteValidator);
         }
 
         /// <inheritdoc/>
@@ -56,9 +76,9 @@ namespace GeekBrains.Learn.TimeSheets.Infrastructure.Managers
         }
 
         /// <inheritdoc/>
-        public void Update(EmployeeDto entity)
+        public IOperationResult Update(EmployeeDto dto)
         {
-            _repository.Update(_mapper.Map<Employee>(entity));
+            return _updateOperation.Update(dto, _updateValidator);
         }
     }
 }
