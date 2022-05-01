@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace GeekBrains.Learn.Cross
@@ -488,6 +489,7 @@ namespace GeekBrains.Learn.Cross
         /// <summary>
         /// 18. Список точек, образующих прямой отрезок
         /// </summary>
+        [DebuggerDisplay("{ToString()}")]
         private class Figure
         {
             public Figure(int directionX, int directionY)
@@ -528,11 +530,17 @@ namespace GeekBrains.Learn.Cross
             /// Лучший потенциальный ход
             /// </summary>
             public Point PotentialPoint { get; set; }
+
+            public override string ToString()
+            {
+                return "Точек: " + Points.Count.ToString();
+            }
         }
 
         /// <summary>
         /// 19. Точка
         /// </summary>
+        [DebuggerDisplay("{ToString()}")]
         private class Point
         {
             public Point(int x, int y)
@@ -543,6 +551,11 @@ namespace GeekBrains.Learn.Cross
 
             public int X { get; set; }
             public int Y { get; set; }
+
+            public override string ToString()
+            {
+                return "X = " + X.ToString() + ", Y = " + Y.ToString();
+            }
         }
     }
 }
