@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeSheets.Domain", "Domain
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeSheets.Dto", "Dto\TimeSheets.Dto.csproj", "{F78FB93A-BE03-45CC-9143-6CD828EAF08F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeSheets.Infrastructure", "TimeSheets.Infrastructure\TimeSheets.Infrastructure.csproj", "{05CAD108-5166-4AAF-8030-022CF0311054}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TimeSheets.Infrastructure", "TimeSheets.Infrastructure\TimeSheets.Infrastructure.csproj", "{05CAD108-5166-4AAF-8030-022CF0311054}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeSheets.UnitTest", "TimeSheets.UnitTest\TimeSheets.UnitTest.csproj", "{37EFB784-03CE-408B-894C-054C3A10C4EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{05CAD108-5166-4AAF-8030-022CF0311054}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05CAD108-5166-4AAF-8030-022CF0311054}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05CAD108-5166-4AAF-8030-022CF0311054}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37EFB784-03CE-408B-894C-054C3A10C4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37EFB784-03CE-408B-894C-054C3A10C4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37EFB784-03CE-408B-894C-054C3A10C4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37EFB784-03CE-408B-894C-054C3A10C4EE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
