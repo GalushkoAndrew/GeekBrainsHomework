@@ -3,13 +3,29 @@
     /// <summary>
     /// Catalog
     /// </summary>
-    public class Catalog
+    public class Catalog: ICatalog
     {
+        private object syncObj = new();
+
         public Catalog()
         {
             SkuList = new List<Sku>();
         }
 
-        public List<Sku> SkuList { get; set; }
+        private List<Sku> SkuList { get; set; }
+
+        public void AddSku(Sku sku)
+        {
+            lock(syncObj) {
+                SkuList.Add(sku);
+            }
+        }
+
+        public IReadOnlyList<Sku> Get()
+        {
+            lock (syncObj) {
+                return SkuList.AsReadOnly();
+            }
+        }
     }
 }

@@ -7,9 +7,9 @@
     <hr>
     @{
         Catalog catalog = (Catalog)@ViewData["Catalog"];
-        if (catalog != null && catalog?.SkuList != null)
+        if (catalog != null && catalog?.Get() != null)
         {
-            @foreach (var item in catalog.SkuList)
+            @foreach (var item in catalog.Get())
             {
                 <div>Id: @item.Id; Name: @item.Name; <img src="@item.Picture" alt="sku picture" width="100"/></div>
             }
