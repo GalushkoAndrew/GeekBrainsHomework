@@ -1,0 +1,18 @@
+﻿@{
+    ViewData["Title"] = "Catalog list";
+}
+
+<div>
+    <h1>Catalog list</h1>
+    <hr>
+    @{
+        Catalog catalog = (Catalog)@ViewData["Catalog"];
+        if (catalog != null && catalog?.SkuList != null)
+        {
+            @foreach (var item in catalog.SkuList)
+            {
+                <div>Id: @item.Id; Name: @item.Name; <img src="@item.Picture" alt="sku picture" width="100"/></div>
+            }
+        }
+    }
+</div>
