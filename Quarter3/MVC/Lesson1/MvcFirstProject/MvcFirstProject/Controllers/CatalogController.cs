@@ -28,7 +28,7 @@ namespace MvcFirstProject.Controllers
         [HttpPost]
         public IActionResult SkuCreating([FromForm] Sku sku)
         {
-            _catalog.SkuList.Add(sku);
+            _catalog.AddSku(sku);
             return View();
         }
     }
