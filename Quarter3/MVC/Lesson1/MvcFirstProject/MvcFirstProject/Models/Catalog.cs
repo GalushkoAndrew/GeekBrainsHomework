@@ -41,6 +41,6 @@ namespace MvcFirstProject.Models
         }
 
         public IReadOnlyList<Sku> Get()
-            => SkuList.Select(x => x.Value).ToList().AsReadOnly();
+            => SkuList.Values.ToList().AsReadOnly();
     }
 }
