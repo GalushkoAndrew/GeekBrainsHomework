@@ -22,7 +22,8 @@ namespace MvcFirstProject.Models
         public void AddSku(Sku sku)
         {
             var currentIndex = Interlocked.Increment(ref index);
-            SkuList.AddOrUpdate(currentIndex, sku, (ind, old) => old);
+            //SkuList.AddOrUpdate(currentIndex, sku, (ind, old) => old);
+            SkuList.AddOrUpdate(sku.Id, sku, (ind, old) => sku);
         }
 
         public void RemoveSku(int id)
@@ -40,6 +41,6 @@ namespace MvcFirstProject.Models
         }
 
         public IReadOnlyList<Sku> Get()
-            => SkuList.Select(x => x.Value).ToList();
+            => SkuList.Select(x => x.Value).ToList().AsReadOnly();
     }
 }
