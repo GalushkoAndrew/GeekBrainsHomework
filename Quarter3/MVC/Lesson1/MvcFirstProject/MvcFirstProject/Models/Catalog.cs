@@ -1,4 +1,7 @@
-﻿namespace MvcFirstProject.Models
+﻿using System;
+using System.Collections.Concurrent;
+
+namespace MvcFirstProject.Models
 {
     /// <summary>
     /// Catalog
@@ -6,26 +9,37 @@
     public class Catalog: ICatalog
     {
         private object syncObj = new();
+        private long index;
 
         public Catalog()
-        {
-            SkuList = new List<Sku>();
+{
+            index = 0;
+            SkuList = new ConcurrentDictionary<long, Sku>();
         }
 
-        private List<Sku> SkuList { get; set; }
+        private ConcurrentDictionary<long, Sku> SkuList { get; set; }
 
         public void AddSku(Sku sku)
         {
-            lock(syncObj) {
-                SkuList.Add(sku);
+            var currentIndex = Interlocked.Increment(ref index);
+            SkuList.AddOrUpdate(currentIndex, sku, (ind, old) => old);
+        }
+
+        public void RemoveSku(int id)
+        {
+            var skuToRemove = SkuList.Where(x => x.Value.Id == id);
+            foreach (var item in skuToRemove) {
+                SkuList.TryRemove(item.Key, out _);
             }
         }
 
-        public IReadOnlyList<Sku> Get()
+        public Sku? Get(long index)
         {
-            lock (syncObj) {
-                return SkuList.AsReadOnly();
-            }
+            SkuList.TryGetValue(index, out Sku? sku);
+            return sku;
         }
+
+        public IReadOnlyList<Sku> Get()
+            => SkuList.Select(x => x.Value).ToList();
     }
 }

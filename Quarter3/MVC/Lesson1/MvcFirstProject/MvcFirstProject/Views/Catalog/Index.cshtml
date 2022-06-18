@@ -6,7 +6,7 @@
     <h1>Catalog list</h1>
     <hr>
     @{
-        Catalog catalog = (Catalog)@ViewData["Catalog"];
+        Catalog? catalog = (Catalog?)@ViewData["Catalog"];
         if (catalog != null && catalog?.Get() != null)
         {
             @foreach (var item in catalog.Get())

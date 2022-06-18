@@ -31,5 +31,18 @@ namespace MvcFirstProject.Controllers
             _catalog.AddSku(sku);
             return View();
         }
+
+        [HttpGet]
+        public IActionResult SkuDeleting()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SkuDeleting([FromForm] Sku sku)
+        {
+            _catalog.RemoveSku(sku.Id);
+            return View();
+        }
     }
 }
