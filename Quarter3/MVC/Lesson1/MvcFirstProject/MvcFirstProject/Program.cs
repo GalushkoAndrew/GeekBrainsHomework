@@ -1,10 +1,12 @@
 using MvcFirstProject.Models;
+using MvcFirstProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<Catalog>();
+builder.Services.AddSingleton<ISendMailService, SendMailService>();
 
 var app = builder.Build();
 
