@@ -6,10 +6,10 @@
     <h1>Catalog list</h1>
     <hr>
     @{
-        Catalog? catalog = (Catalog?)@ViewData["Catalog"];
-        if (catalog != null && catalog?.Get() != null)
+        IReadOnlyList<Sku>? catalog = (IReadOnlyList<Sku>?)@ViewData["Catalog"];
+        if (catalog != null)
         {
-            @foreach (var item in catalog.Get())
+            @foreach (var item in catalog)
             {
                 <div>Id: @item.Id; Name: @item.Name; <img src="@item.Picture" alt="sku picture" width="100"/></div>
             }

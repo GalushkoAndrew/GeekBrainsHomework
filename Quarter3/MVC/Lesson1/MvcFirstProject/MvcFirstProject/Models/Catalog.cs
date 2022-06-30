@@ -1,6 +1,4 @@
-﻿using MvcFirstProject.Models.Mail;
-using MvcFirstProject.Services;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 
 namespace MvcFirstProject.Models
 {
@@ -10,30 +8,21 @@ namespace MvcFirstProject.Models
     public class Catalog: ICatalog
     {
         private long index;
-        private readonly ISendMailService _mailService;
 
-        public Catalog(ISendMailService mailService)
+        public Catalog()
         {
             index = 0;
             SkuList = new ConcurrentDictionary<long, Sku>();
-            _mailService = mailService;
         }
 
         private ConcurrentDictionary<long, Sku> SkuList { get; set; }
 
-        public void AddSku(Sku sku)
+        public long GetNewIndex()
+            => Interlocked.Increment(ref index);
+
+        public void Add(Sku sku, long ind)
         {
-            var currentIndex = Interlocked.Increment(ref index);
-            SkuList.AddOrUpdate(sku.Id, sku, (ind, old) => sku);
-            var mailFields = new MailFields(
-                "asp2022gb@rodion-m.ru",
-                "3drtLSa1",
-                "strateg-23@yandex.ru",
-                "Notification",
-                "New goods added",
-                "smtp.beget.com",
-                25);
-            _mailService.Send(mailFields);
+            SkuList.TryAdd(ind, sku);
         }
 
         public void RemoveSku(int id)
@@ -50,7 +39,7 @@ namespace MvcFirstProject.Models
             return sku;
         }
 
-        public IReadOnlyList<Sku> Get()
+        public IReadOnlyList<Sku> GetList()
             => SkuList.Values.ToList().AsReadOnly();
     }
 }

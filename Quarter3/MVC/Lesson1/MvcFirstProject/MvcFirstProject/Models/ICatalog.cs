@@ -2,12 +2,14 @@
 {
     public interface ICatalog
     {
-        void AddSku(Sku sku);
+        void Add(Sku sku, long ind);
 
-        IReadOnlyList<Sku> Get();
+        IReadOnlyList<Sku> GetList();
 
         Sku? Get(long index);
 
         void RemoveSku(int id);
+
+        long GetNewIndex();
     }
 }

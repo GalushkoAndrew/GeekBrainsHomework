@@ -5,8 +5,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<Catalog>();
-builder.Services.AddSingleton<ISendMailService, SendMailService>();
+builder.Services.AddSingleton<ICatalog, Catalog>();
+builder.Services.AddScoped<ISendMailService, MailKitSendMailService>();
+builder.Services.AddScoped<ICatalogManager, CatalogManager>();
 
 var app = builder.Build();
 
