@@ -21,7 +21,15 @@ namespace MvcFirstProject.Services
             var currentIndex = _catalog.GetNewIndex();
             _catalog.Add(sku, currentIndex);
             _logger.LogInformation("Good was added: {name}", sku.Name ?? "");
-            _mailService.Send("Notification", "New goods added");
+            _mailService.SendAsync("Notification", "New goods added");
+        }
+
+        public async Task CreateAsync(Sku sku)
+        {
+            var currentIndex = _catalog.GetNewIndex();
+            _catalog.Add(sku, currentIndex);
+            _logger.LogInformation("Good was added: {name}", sku.Name ?? "");
+            await _mailService.SendAsync("Notification", "New goods added");
         }
 
         public Sku? Get(long index)

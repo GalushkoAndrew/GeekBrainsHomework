@@ -5,6 +5,7 @@ namespace MvcFirstProject.Services
     public interface ICatalogManager
     {
         void Create(Sku sku);
+        Task CreateAsync(Sku sku);
         void Delete(int id);
         Sku? Get(long index);
         IReadOnlyList<Sku> GetList();
