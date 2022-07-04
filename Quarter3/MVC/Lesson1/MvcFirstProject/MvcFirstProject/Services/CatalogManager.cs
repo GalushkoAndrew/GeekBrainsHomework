@@ -1,5 +1,4 @@
 ﻿using MvcFirstProject.Models;
-using MvcFirstProject.Models.Mail;
 
 namespace MvcFirstProject.Services
 {
@@ -7,18 +6,22 @@ namespace MvcFirstProject.Services
     {
         private readonly ICatalog _catalog;
         private readonly ISendMailService _mailService;
+        private readonly ILogger _logger;
 
         public CatalogManager(ICatalog catalog,
-            ISendMailService mailService)
+            ISendMailService mailService,
+            ILogger<CatalogManager> logger)
         {
             _catalog = catalog;
             _mailService = mailService;
+            _logger = logger;
         }
         public void Create(Sku sku)
         {
             var currentIndex = _catalog.GetNewIndex();
             _catalog.Add(sku, currentIndex);
-            _mailService.Send(GetMailFields());
+            _logger.LogInformation("Good was added: {name}", sku.Name ?? "");
+            _mailService.Send("Notification", "New goods added");
         }
 
         public Sku? Get(long index)
@@ -29,17 +32,5 @@ namespace MvcFirstProject.Services
 
         public void Delete(int id)
             => _catalog.RemoveSku(id);
-
-        private MailFields GetMailFields()
-        {
-            return new MailFields(
-                from: "asp2022gb@rodion-m.ru",
-                password: "3drtLSa1",
-                to: "strateg-23@yandex.ru",
-                subject: "Notification",
-                body: "New goods added",
-                host: "smtp.beget.com",
-                port: 25);
-        }
     }
 }

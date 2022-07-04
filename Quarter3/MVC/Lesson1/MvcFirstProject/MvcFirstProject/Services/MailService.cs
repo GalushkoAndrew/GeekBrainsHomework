@@ -1,4 +1,5 @@
 ﻿using MailKit.Net.Smtp;
+using Microsoft.Extensions.Options;
 using MimeKit;
 using MvcFirstProject.Models.Mail;
 
@@ -6,20 +7,32 @@ namespace MvcFirstProject.Services
 {
     public sealed class MailKitSendMailService : ISendMailService
     {
-        public void Send(MailFields mailFields)
+        private readonly IOptions<MailOptions> _mailOptions;
+        private readonly string _login;
+        private readonly string _password;
+
+        public MailKitSendMailService(IOptions<MailOptions> mailOptions, IConfiguration config)
         {
+            _mailOptions = mailOptions;
+            _login = config["MailOptions:Login"];
+            _password = config["MailOptions:Password"];
+        }
+
+        public void Send(string subj, string body)
+        {
+            var options = _mailOptions.Value;
             MimeMessage mimeMessage = new();
-            mimeMessage.From.Add(new MailboxAddress(mailFields.From, mailFields.From));
-            mimeMessage.To.Add(new MailboxAddress(mailFields.To, mailFields.To));
-            mimeMessage.Subject = mailFields.Subject;
+            mimeMessage.From.Add(new MailboxAddress(_login, _login));
+            mimeMessage.To.Add(new MailboxAddress(options.To, options.To));
+            mimeMessage.Subject = subj;
 
             mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html) {
-                Text = mailFields.Body
+                Text = body
             };
 
             var client = new SmtpClient();
-            client.Connect(mailFields.Host, mailFields.Port, false);
-            client.Authenticate(mailFields.From, mailFields.Password);
+            client.Connect(options.Host, options.Port, false);
+            client.Authenticate(_login, _password);
             client.Send(mimeMessage);
             client.Disconnect(true);
         }

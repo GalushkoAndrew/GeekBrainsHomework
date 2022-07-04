@@ -1,9 +1,7 @@
-﻿using MvcFirstProject.Models.Mail;
-
-namespace MvcFirstProject.Services
+﻿namespace MvcFirstProject.Services
 {
     public interface ISendMailService
     {
-        void Send(MailFields mailOptions);
+        void Send(string subj, string body);
     }
 }
