@@ -11,6 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<ICatalog, Catalog>();
 builder.Services.AddScoped<ISendMailService, MailKitSendMailService>();
 builder.Services.AddScoped<ICatalogManager, CatalogManager>();
+builder.Services.AddHostedService<ServerWorkValidateService>();
 
 builder.Services.Configure<MailOptions>(builder.Configuration.GetSection("MailOptions"));
 builder.Host.UseSerilog((_, conf) => {

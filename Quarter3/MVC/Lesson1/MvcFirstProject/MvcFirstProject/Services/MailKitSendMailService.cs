@@ -30,16 +30,16 @@ namespace MvcFirstProject.Services
             client.Disconnect(true);
         }
 
-        public async Task SendAsync(string subj, string body)
+        public async Task SendAsync(string subj, string body, CancellationToken cancellationToken)
         {
             var options = _mailOptions.Value;
             MimeMessage mimeMessage = GetMimeMessage(subj, body);
 
             var client = new SmtpClient();
-            await client.ConnectAsync(options.Host, options.Port, false);
-            await client.AuthenticateAsync(_login, _password);
-            await client.SendAsync(mimeMessage);
-            await client.DisconnectAsync(true);
+            await client.ConnectAsync(options.Host, options.Port, false, cancellationToken);
+            await client.AuthenticateAsync(_login, _password, cancellationToken);
+            await client.SendAsync(mimeMessage, cancellationToken);
+            await client.DisconnectAsync(true, cancellationToken);
         }
 
         private MimeMessage GetMimeMessage(string subj, string body)

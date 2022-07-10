@@ -20,8 +20,9 @@ namespace MvcFirstProject.Models
         public long GetNewIndex()
             => Interlocked.Increment(ref index);
 
-        public void Add(Sku sku, long ind)
+        public void Add(Sku sku, long ind, CancellationToken cancellationToken = default)
         {
+            ThrowCanceledException(cancellationToken);
             SkuList.TryAdd(ind, sku);
         }
 
@@ -41,5 +42,14 @@ namespace MvcFirstProject.Models
 
         public IReadOnlyList<Sku> GetList()
             => SkuList.Values.ToList().AsReadOnly();
+
+        private void ThrowCanceledException(CancellationToken cancellationToken)
+        {
+            if (cancellationToken != default) {
+                if (cancellationToken.IsCancellationRequested) {
+                    throw new OperationCanceledException(cancellationToken);
+                }
+            }
+        }
     }
 }

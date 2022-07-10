@@ -2,7 +2,7 @@
 {
     public interface ICatalog
     {
-        void Add(Sku sku, long ind);
+        void Add(Sku sku, long ind, CancellationToken cancellationToken = default);
 
         IReadOnlyList<Sku> GetList();
 
