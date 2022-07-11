@@ -22,7 +22,7 @@ namespace MvcFirstProject.Models
 
         public void Add(Sku sku, long ind, CancellationToken cancellationToken = default)
         {
-            ThrowCanceledException(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             SkuList.TryAdd(ind, sku);
         }
 
@@ -42,14 +42,5 @@ namespace MvcFirstProject.Models
 
         public IReadOnlyList<Sku> GetList()
             => SkuList.Values.ToList().AsReadOnly();
-
-        private void ThrowCanceledException(CancellationToken cancellationToken)
-        {
-            if (cancellationToken != default) {
-                if (cancellationToken.IsCancellationRequested) {
-                    throw new OperationCanceledException(cancellationToken);
-                }
-            }
-        }
     }
 }

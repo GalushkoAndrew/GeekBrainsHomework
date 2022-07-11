@@ -26,7 +26,7 @@ namespace MvcFirstProject.Services
 
         public async Task CreateAsync(Sku sku, CancellationToken cancellationToken)
         {
-            ThrowCanceledException(cancellationToken);
+            cancellationToken.ThrowIfCancellationRequested();
             var currentIndex = _catalog.GetNewIndex();
             _catalog.Add(sku, currentIndex, cancellationToken);
             _logger.LogInformation("Good was added: {name}", sku.Name ?? "");
@@ -41,12 +41,5 @@ namespace MvcFirstProject.Services
 
         public void Delete(int id)
             => _catalog.RemoveSku(id);
-
-        private void ThrowCanceledException(CancellationToken cancellationToken)
-        {
-            if (cancellationToken.IsCancellationRequested) {
-                throw new OperationCanceledException(cancellationToken);
-            }
-        }
     }
 }
