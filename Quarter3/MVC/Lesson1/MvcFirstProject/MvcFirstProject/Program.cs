@@ -1,3 +1,4 @@
+using MvcFirstProject.DomainEvents.EventConsumers;
 using MvcFirstProject.Models;
 using MvcFirstProject.Models.Mail;
 using MvcFirstProject.Services;
@@ -18,7 +19,8 @@ try {
     builder.Services.AddSingleton<ICatalog, Catalog>();
     builder.Services.AddScoped<ISendMailService, MailKitSendMailService>();
     builder.Services.AddScoped<ICatalogManager, CatalogManager>();
-	builder.Services.AddHostedService<ServerWorkValidateService>();
+    builder.Services.AddHostedService<ServerWorkValidateService>();
+    builder.Services.AddHostedService<SkuAddedEmailSender>();
 
     builder.Services.Configure<MailOptions>(builder.Configuration.GetSection("MailOptions"));
     builder.Host.UseSerilog((_, conf) => {

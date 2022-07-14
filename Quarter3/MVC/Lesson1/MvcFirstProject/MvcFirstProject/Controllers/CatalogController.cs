@@ -27,9 +27,9 @@ namespace MvcFirstProject.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> SkuCreating([FromForm] Sku sku, CancellationToken cancellationToken)
+        public IActionResult SkuCreating([FromForm] Sku sku, CancellationToken cancellationToken)
         {
-            await _catalogManager.CreateAsync(sku, cancellationToken);
+            _catalogManager.Create(sku, cancellationToken);
             return View();
         }
 
