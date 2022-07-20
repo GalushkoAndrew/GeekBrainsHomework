@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.HttpLogging;
 using MvcFirstProject.DomainEvents.EventConsumers;
 using MvcFirstProject.Models;
 using MvcFirstProject.Models.Mail;
@@ -27,6 +28,14 @@ try {
         conf.WriteTo.Console()
         .WriteTo.File("log_.txt", rollingInterval: RollingInterval.Day);
     });
+    builder.Services.AddHttpLogging(options => //настройка
+    {
+        options.LoggingFields = HttpLoggingFields.RequestHeaders
+                                | HttpLoggingFields.ResponseHeaders
+                                | HttpLoggingFields.RequestBody
+                                | HttpLoggingFields.ResponseBody;
+    });
+
 
     var app = builder.Build();
 
@@ -36,8 +45,18 @@ try {
         // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
         app.UseHsts();
     }
-
     app.UseHttpsRedirection();
+    app.UseHttpLogging();
+    app.Use(async (context, next) => {
+        var userAgent = context.Request.Headers.UserAgent.ToString();
+        if (!userAgent.ToLower().Contains("edg")) {
+            context.Response.ContentType = "text/plain; charset=UTF-8";
+            await context.Response.WriteAsync("Ваш браузер не поддерживается. Поддерживается только браузер Edge");
+            return;
+        }
+        await next();
+    });
+
     app.UseStaticFiles();
     app.UseSerilogRequestLogging();
 
