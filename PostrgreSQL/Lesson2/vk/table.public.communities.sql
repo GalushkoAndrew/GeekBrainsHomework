@@ -5,3 +5,18 @@ CREATE TABLE communities (
   creator_id INT NOT NULL,
   created_at TIMESTAMP
 );
+
+ALTER TABLE communities
+ADD CONSTRAINT communities_creator_id_fk
+FOREIGN KEY (creator_id)
+REFERENCES users (id);
+
+ALTER TABLE communities
+ADD COLUMN members INT[];
+
+UPDATE communities
+SET members = ARRAY(
+	SELECT ku.user_id
+	FROM communities_users AS ku
+	WHERE ku.community_id = id)
+WHERE id = 3;

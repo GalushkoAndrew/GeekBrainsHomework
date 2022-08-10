@@ -8,3 +8,13 @@ CREATE TABLE messages (
   is_delivered BOOLEAN,
   created_at TIMESTAMP
 );
+
+ALTER TABLE messages
+ADD CONSTRAINT messages_from_user_id_fk
+FOREIGN KEY (from_user_id)
+REFERENCES users (id);
+
+ALTER TABLE messages
+ADD CONSTRAINT messages_to_user_id_fk
+FOREIGN KEY (to_user_id)
+REFERENCES users (id);
