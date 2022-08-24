@@ -29,6 +29,8 @@ namespace CardStorageService
                 Configuration.GetSection("Settings:DatabaseOptions").Bind(options);
             });
 
+            services.AddSingleton<IAuthenticateService, AuthenticateService>();
+
             services.AddScoped<IClientRepositoryService, ClientRepository>();
             services.AddScoped<ICardRepositoryService, CardRepository>();
 
