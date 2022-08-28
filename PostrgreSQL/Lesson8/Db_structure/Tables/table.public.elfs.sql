@@ -1,0 +1,6 @@
+-- Эльфы
+CREATE TABLE elfs (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	speed INT NOT NULL
+);

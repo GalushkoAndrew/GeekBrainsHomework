@@ -1,0 +1,6 @@
+-- Гномы
+CREATE TABLE dwarfs (
+	id SERIAL PRIMARY KEY,
+	name VARCHAR(50) NOT NULL,
+	ratio FLOAT NOT NULL
+);
