@@ -1,6 +1,4 @@
-﻿using CardStorageService.Data;
-
-namespace CardStorageService.Models
+﻿namespace CardStorageService.Models
 {
     public class SessionInfo
     {
