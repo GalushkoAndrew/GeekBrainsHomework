@@ -6,7 +6,7 @@ namespace Account.Helper
     {
         static void Main(string[] args)
         {
-            var res = PasswordUtils.CreatePasswordHash("12345");
+            var res = PasswordUtils.CreatePasswordHash("123");
             Console.ReadKey();
         }
     }

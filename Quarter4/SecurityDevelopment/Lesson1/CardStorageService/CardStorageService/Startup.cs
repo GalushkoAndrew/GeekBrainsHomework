@@ -1,6 +1,12 @@
+using AutoMapper;
 using CardStorageService.Data;
-using CardStorageService.Services.Impl;
+using CardStorageService.Mappings;
+using CardStorageService.Models.Requests;
+using CardStorageService.Models.Validators;
 using CardStorageService.Services;
+using CardStorageService.Services.Impl;
+using FluentValidation;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpLogging;
@@ -8,8 +14,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
+using System.Text;
 
 namespace CardStorageService
 {
@@ -22,9 +30,17 @@ namespace CardStorageService
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var mapperConfiguration = new MapperConfiguration(mp => mp.AddProfile(new MappingProfile()));
+            var mapper = mapperConfiguration.CreateMapper();
+            services.AddSingleton(mapper);
+
+            services.AddScoped<IValidator<AuthenticationRequest>, AuthenticationRequestValidator>();
+            services.AddScoped<IValidator<CreateCardRequest>, CreateCardRequestValidator>();
+            services.AddScoped<IValidator<UpdateCardRequest>, UpdateCardRequestValidator>();
+            services.AddScoped<IValidator<CreateClientRequest>, CreateClientRequestValidator>();
+
             services.Configure<DatabaseOptions>(options =>
             {
                 Configuration.GetSection("Settings:DatabaseOptions").Bind(options);
@@ -51,6 +67,29 @@ namespace CardStorageService
             });
 
             services.AddControllers();
+
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme =
+                JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme =
+                JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new
+                TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(AuthenticateService.SecretKey)),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CardStorageService", Version = "v1" });
@@ -80,7 +119,6 @@ namespace CardStorageService
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
