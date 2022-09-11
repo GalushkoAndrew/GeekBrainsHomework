@@ -32,6 +32,8 @@ namespace CardStorageService
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddGrpc();
+
             var mapperConfiguration = new MapperConfiguration(mp => mp.AddProfile(new MappingProfile()));
             var mapper = mapperConfiguration.CreateMapper();
             services.AddSingleton(mapper);
@@ -129,12 +131,19 @@ namespace CardStorageService
             }
 
             app.UseRouting();
+            app.UseWhen(ctx => ctx.Request.ContentType != "application/grpc", // Microsoft ÏÎÎÁÅÙÀË â .NET 7 èñïðàâèòü.
+                builder =>
+                {
+                    builder.UseHttpLogging();
+                });
+            //app.UseHttpLogging();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGrpcService<ClientService>();
                 endpoints.MapControllers();
             });
         }
