@@ -1,0 +1,10 @@
+|              Method |            Query |        Mean |        Error |     StdDev | Ratio | RatioSD |      Gen0 |      Gen1 |   Allocated | Alloc Ratio |
+|-------------------- |----------------- |------------:|-------------:|-----------:|------:|--------:|----------:|----------:|------------:|------------:|
+|        SimpleSearch | intercontinental | 2,273.26 ms |   340.151 ms |  52.639 ms | 1.000 |    0.00 |         - |         - |    27.53 KB |        1.00 |
+| FullTextIndexSearch | intercontinental |    13.67 ms |     2.760 ms |   0.427 ms | 0.006 |    0.00 |   15.6250 |         - |    29.35 KB |        1.07 |
+|                     |                  |             |              |            |       |         |           |           |             |             |
+|        SimpleSearch |           monday | 2,385.39 ms |   772.815 ms | 200.698 ms |  1.00 |    0.00 |         - |         - |     1.74 KB |        1.00 |
+| FullTextIndexSearch |           monday |   369.79 ms |    76.740 ms |  19.929 ms |  0.16 |    0.01 |         - |         - |   137.59 KB |       78.97 |
+|                     |                  |             |              |            |       |         |           |           |             |             |
+|        SimpleSearch |              not | 2,720.69 ms | 1,519.144 ms | 394.517 ms |  1.00 |    0.00 | 4000.0000 | 2000.0000 | 27222.22 KB |        1.00 |
+| FullTextIndexSearch |              not | 2,147.69 ms |   473.109 ms |  73.214 ms |  0.84 |    0.08 | 4000.0000 | 2000.0000 | 27561.45 KB |        1.01 |
