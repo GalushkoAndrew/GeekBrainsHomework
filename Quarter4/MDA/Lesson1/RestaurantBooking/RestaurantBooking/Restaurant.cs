@@ -1,4 +1,5 @@
-﻿using System.Collections.Concurrent;
+﻿using Messaging;
+using System.Collections.Concurrent;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,6 +11,8 @@ namespace RestaurantBooking
         private const int _managerSpeed = 5000;
         private readonly ConcurrentBag<Table> _tables = new ConcurrentBag<Table>();
         private readonly CallCenter _callCenter = new CallCenter();
+        private readonly Producer _producer = new Producer ("BookingNotification", "localhost");
+
         public Restaurant()
         {
             for (ushort i = 1; i < 11; i++)
@@ -44,7 +47,7 @@ namespace RestaurantBooking
                 var table = _tables
                     .FirstOrDefault(x => x.SeatsCount > countOfPersons && x.State == Enums.State.Free);
                 table?.SetState(Enums.State.Booked);
-                await _callCenter.SendMessage(table is null
+                _producer.Send(table is null
                     ? "К сожалению, сейчас все столики заняты"
                     : $"Готово! Ваш столик номер {table.Id}");
             });
