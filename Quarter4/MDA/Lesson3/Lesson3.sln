@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.Notification", "Restaurant.Notification\Restaurant.Notification.csproj", "{EAD1F102-477E-4180-95C1-E944DB8C1C52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.Booking", "Restaurant.Booking\Restaurant.Booking.csproj", "{957FFC5F-A171-4AC7-9B2C-A961F9E0A1F2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.Kitchen", "Restaurant.Kitchen\Restaurant.Kitchen.csproj", "{A41BD543-57E0-4E24-B8AC-2D46A13659F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Restaurant.Messages", "Restaurant.Messages\Restaurant.Messages.csproj", "{CB5BAC1D-B245-481A-8114-1B854D9A2F5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAD1F102-477E-4180-95C1-E944DB8C1C52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD1F102-477E-4180-95C1-E944DB8C1C52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD1F102-477E-4180-95C1-E944DB8C1C52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD1F102-477E-4180-95C1-E944DB8C1C52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{957FFC5F-A171-4AC7-9B2C-A961F9E0A1F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{957FFC5F-A171-4AC7-9B2C-A961F9E0A1F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{957FFC5F-A171-4AC7-9B2C-A961F9E0A1F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{957FFC5F-A171-4AC7-9B2C-A961F9E0A1F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A41BD543-57E0-4E24-B8AC-2D46A13659F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A41BD543-57E0-4E24-B8AC-2D46A13659F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A41BD543-57E0-4E24-B8AC-2D46A13659F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A41BD543-57E0-4E24-B8AC-2D46A13659F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB5BAC1D-B245-481A-8114-1B854D9A2F5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB5BAC1D-B245-481A-8114-1B854D9A2F5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB5BAC1D-B245-481A-8114-1B854D9A2F5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB5BAC1D-B245-481A-8114-1B854D9A2F5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
