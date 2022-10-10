@@ -2,7 +2,7 @@
 
 namespace Restaurant.Messages
 {
-    public interface IKitchenReady
+    public interface IBookingCancellation
     {
         public Guid OrderId { get; }
     }
