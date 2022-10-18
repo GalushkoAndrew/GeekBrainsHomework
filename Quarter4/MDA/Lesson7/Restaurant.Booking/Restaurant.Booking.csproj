@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Restaurant.Messages\Restaurant.Messages.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="MassTransit.AspNetCore" Version="7.3.1" />
+        <PackageReference Include="MassTransit.Prometheus" Version="8.0.1" />
+        <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="6.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.1" />
+        <PackageReference Include="prometheus-net.AspNetCore" Version="5.0.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <InternalsVisibleTo Include="Restaurant.Tests" />
+    </ItemGroup>
+
+</Project>
